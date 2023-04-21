@@ -19,7 +19,8 @@
 
 .center  { 
     display: flex;
-    justify-content: center; height: 700px;  
+    justify-content: center;
+    height: 700px;  
 }
 .containerForm { 
     user-select: none;

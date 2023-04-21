@@ -1,0 +1,59 @@
+.containerAll { 
+    background-color: rgba(0, 0, 0, 0.8);   
+    display: flex;
+    height: 58px;
+    width: 100%;
+}
+
+.containerLogo { 
+    width: 13%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerInfo {   
+    width: 67%;
+    display: flex;
+    align-items: center;
+}
+
+.containerInfo span { 
+    color: rgb(255, 255, 255);
+    filter: contrast(150%) saturate(150%);
+    font-size: 16px;
+    margin-right: 23px;
+}
+
+.containerUser {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userDiv { 
+    width: 13%;
+    font-size: 20px;
+    color: white;
+}
+
+.userDiv1 {
+    display: flex;
+    width: 13%;
+    font-size: 20px;
+    color: white;
+}
+
+.userDiv1 img { 
+    border-radius: 4px;
+    height: 34px;
+    width: 33px;
+}
+
+.arrow { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    font-size: 16px;
+}
