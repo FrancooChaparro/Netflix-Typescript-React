@@ -9,14 +9,18 @@ export const modelUser = (sequelize: Sequelize) => {
         autoIncrement: true,
         primaryKey: true,
       },
-      firstName: {
+      username: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      lastName: {
+      email: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      password: { 
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
     },
     {
       timestamps: false,

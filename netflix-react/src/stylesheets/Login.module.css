@@ -1,0 +1,153 @@
+.containerAll { 
+    position: relative;
+    height:  100%;
+    width: 100%;
+    background-image: url("../images/img1.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-size: 100% 100%;
+    height: 125vh;
+}
+
+.container { 
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);     
+}
+
+.center  { 
+    display: flex;
+    justify-content: center; height: 700px;  
+}
+.containerForm { 
+    user-select: none;
+    background-color: rgba(0, 0, 0, 0.7);     
+    width: 450px;
+    height: 480px;
+    display: flex;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+
+.formTitle { 
+    margin: 0 auto;
+    width: 300px;
+    height: 60px;
+    margin-bottom: 35px;
+}
+
+.formTitle h3 { 
+    color: white;
+    font-size: 32px;
+    font-style:unset
+}
+
+
+.formInputs { 
+
+    width: 300px;
+    height: 180px;
+    margin: 0 auto;
+}
+
+input::placeholder {
+    color: #b6b3b3;
+    font-style:initial;
+    font-size: 16px;
+    padding-left: 12px;
+  }
+
+
+.inputs { 
+    width: 280px;
+    height: 41px;
+    background-color: rgb(77, 75, 75);
+    border: none;
+    margin-bottom: 5px;
+    margin-top: 8px;
+    border-radius: 3%;
+    color: white;
+    font-size: 17px;
+    padding-left: 18px;
+}
+
+.inputsError {
+    width: 280px;
+    height: 41px;
+    background-color: rgb(77, 75, 75);
+    border: none;
+    margin-bottom: 5px;
+    margin-top: 8px;
+    border-radius: 3%;
+    color: white;
+    font-size: 17px;
+    padding-left: 18px;
+    border-bottom: 3px solid #e87c03;
+}
+
+.inputsError:focus { 
+    box-shadow: none;
+    background-color: rgb(104, 103, 103);
+    outline: none;
+}
+
+.inputs:focus { 
+    box-shadow: none;
+    background-color: rgb(104, 103, 103);
+    border: none;
+    outline: none;
+}
+
+.btn {
+    width: 300px;
+    height: 43px;
+    background-color: #e50914;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4%;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.forminfo {
+    padding-top: 125px;
+    width: 300px;
+    margin: 0 auto;   
+}
+
+.forminfo span { 
+    color: #858080;
+}
+
+.forminfo div { 
+    margin-bottom: 12px;
+}
+
+.spanError { 
+    color: #e87c03;
+    font-size: 14px;
+    padding-bottom: 4px;
+}
+
+.Sign { 
+    color: white;
+    font-size: 17px;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.Learn { 
+    color: #0080ff;
+    color: red;
+    cursor: pointer;
+}
+
+img {
+    filter: contrast(150%) saturate(200%);
+    user-select: none;
+
+}
