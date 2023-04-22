@@ -1,0 +1,48 @@
+.containerMenu { 
+    height: 98px;
+    width: 190px;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    flex-direction: column;
+}
+
+.containerAvatar { 
+    height: 50%;
+    width: 100%;
+    display: flex;
+    color: white;
+    font-size: 13px;
+}
+
+.imagen { 
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imagen img { 
+    width: 62%;
+    height: 58%;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.username { 
+    width: 75%;
+    display: flex;
+    align-items: center;
+}
+
+.containerLogout { 
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    border-top: 1px solid grey;
+}
+
+.containerMenu span { 
+    cursor: pointer;
+}
