@@ -21,10 +21,10 @@ export const Landing:  React.FC<MyProps> = ({ movie, title }) => {
             <h1>{title}</h1>
         </div>
         <div className={styles.containerCards}>
+            <Card cardProps={movie[6]}/>
             <Card cardProps={movie[5]}/>
-            <Card cardProps={movie[10]}/>
-            <Card cardProps={movie[8]}/>
-            <Card cardProps={movie[13]}/>
+            <Card cardProps={movie[0]}/>
+            <Card cardProps={movie[12]}/>
         </div>
     </div>
   )

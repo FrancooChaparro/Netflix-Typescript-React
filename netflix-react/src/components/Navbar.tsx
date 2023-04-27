@@ -5,7 +5,8 @@ import Avatar from "../images/Netflix-avatar.png";
 import { BiSearch } from "react-icons/bi" 
 import { IoNotificationsOutline } from "react-icons/io5" 
 import { BsChevronDown } from "react-icons/bs" ;
-import { UserMenu } from "./UserMenu"
+import { UserMenu } from "./UserMenu";
+import { Link } from "react-router-dom";
 
 
 export const Navbar = () => {
@@ -16,8 +17,8 @@ export const Navbar = () => {
      <img src={Logo} alt="" style={{height: "52px"}}/>
      </div>
      <div className={styles.containerInfo}>
-        <span>Home</span>
-        <span>Series</span>
+        <Link to={"/Home"} style={{textDecoration: "none"}} onClick={() => window.scrollTo(0, 0)}><span>Home</span></Link>
+        <Link to={"/Home"} style={{textDecoration: "none"}} onClick={() => window.scrollTo(0, 300)}><span>Series</span></Link>
         <span>Films</span>
         <span>New & Popular</span>
         <span>My List</span>
