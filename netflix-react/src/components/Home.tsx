@@ -9,7 +9,8 @@ import { Movies } from '../redux/reducer';
 import axios from "axios";
 
 interface MyProps {
-  movie: any
+  movie: any,
+  title: String
  }
 
 export const Home = () => {
@@ -30,8 +31,11 @@ export const Home = () => {
       <div className={styles.ContainerBackground}>
         <img src={Background} alt="" className={styles.background} />
       </div>
-       <Landing movie={counterValue}/>
-       <Landing movie={counterValue}/>
+       <Landing  title={"Trending Now"} movie={counterValue}/><br />
+       <Landing  title={"My List"} movie={counterValue}/> <br />
+       <Landing  title={"Comedy"} movie={counterValue}/> <br />
+       <Landing  title={"Terror"} movie={counterValue}/> <br />
+       <Landing  title={"Programas TV"} movie={counterValue}/>
     </div>
   )
 }
