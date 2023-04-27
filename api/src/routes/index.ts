@@ -17,7 +17,6 @@ router.post("/users", async (req: Request, res: Response) => {
 
     return res.json({ msg: `User create succesfully`, user: usuario });
   } catch (error) {
-    console.log("voy al catch");
     return res.json({ msg: `Error 404 -${error}` });
   }
 });
@@ -34,7 +33,7 @@ router.get("/movies", async (req: Request, res: Response) => {
     } = await axios.get(`${API_URL}/discover/movie`, {
       params: {
         api_key: API_KEY,
-        page: 4,
+        page: 5,
       },
     });
 
@@ -54,7 +53,6 @@ router.get("/movies", async (req: Request, res: Response) => {
       movies: "databaseLoaded",
     });
   } catch (error) {
-    console.log("voy al catch");
     return res.json({ msg: `Error 404 -${error}` });
   }
 });
@@ -62,8 +60,6 @@ router.get("/movies", async (req: Request, res: Response) => {
 router.get("/userss", async (req: Request, res: Response) => {
   try {
     const moviess = await movies.findAll();
-
-    console.log(moviess);
 
     return res.json({ msg: "statusTrue ", movies: moviess });
 

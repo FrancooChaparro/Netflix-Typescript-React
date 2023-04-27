@@ -1,0 +1,21 @@
+.containerAll { 
+    /* height: 200px; */
+    width: 100%;
+    background-color: #1b1b1b;
+    
+}
+
+.containerTitle { 
+    z-index: 0;
+    font-size: 14px;
+    color: white;
+    width: 97%;
+    margin: 0 auto;
+}
+
+.containerCards { 
+    width: 97%;
+    margin: 0 auto;
+    height: 130px;
+    display: flex;
+}

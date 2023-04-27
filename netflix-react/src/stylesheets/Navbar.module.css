@@ -4,6 +4,7 @@
     height: 58px;
     width: 100%;
     position: fixed;
+    z-index: 9;
 }
 
 .containerLogo { 
@@ -98,6 +99,9 @@
     cursor: pointer; 
     transform: rotate(180deg)
 }
+
+
+  
 
 /* .containerUser {
     width: 20%;

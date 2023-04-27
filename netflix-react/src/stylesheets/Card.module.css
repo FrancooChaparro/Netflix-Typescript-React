@@ -1,0 +1,156 @@
+/* .containerCard { 
+  width: 316px;
+  background-color: cadetblue;
+  margin-right: 10px;
+  height: 19vh;
+}
+
+.image { 
+  width: 100%;
+  z-index: 5;
+  height: 19vh
+}
+
+.image:hover { 
+  opacity: 0;
+}
+
+.image:hover + .containerCardInfo { 
+  transform: translateY(-200px);
+  opacity: 100;
+  display: block;
+}
+
+.containerCardInfo { 
+  z-index: 8;
+  opacity: 0;
+  height: 150px;
+  width: 316px;
+  background-color: rgb(175, 56, 56);
+}
+
+
+.imageInfo { 
+  width: 100%;
+  height: 70%;
+}
+
+.containerCardInfo:hover { 
+  transform: translateY(-200px);
+  opacity: 100;
+  display: block;
+}
+
+.containerCardInfo:hover + .image {  
+  display: none;
+  opacity: 0;
+} */
+
+
+.containerCard {
+  position: relative;
+  width: 316px;
+  height: 20vh;
+  margin-right: 10px;
+}
+
+
+
+.containerCardInfo, .containerCardInfo2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  
+}
+
+
+.containerCardInfo {
+  height: 20vh;
+  z-index: 2;
+}
+
+.image { 
+  width: 100%;
+  height: 100%;
+}
+.containerCardInfo:hover { 
+  opacity: 0;
+}
+.containerCardInfo:hover + .containerCardInfo2 { 
+  transform: translateY(-60px);
+  opacity: 100;
+  display: block;
+  z-index: 999;
+}
+
+
+.containerCardInfo2 {
+  z-index: 1;
+  opacity: 0;
+  background-color: violet;
+}
+
+
+.imageInfo {
+  width: 100%;
+  height: 20vh;
+}
+
+
+.containerCard:hover .containerCardInfo {
+  opacity: 0;
+}
+
+
+.containerCardInfo2:hover {
+  display: block;
+  opacity: 100;
+  z-index: 99;
+  transform: translateY(-60px);
+
+}
+
+.data {
+  background-color: yellow;
+}
+
+
+.details { 
+  height: 20vh;
+  width: 100%;
+  background-color: yellowgreen;
+}
+.details img { 
+  width: 100%;
+  height: 100%;
+}
+
+.details2 { 
+  height: 20vh;
+  width: 100%;
+  background-color: rgb(55, 63, 40);
+}
+
+
+.icons { 
+  height: 31%;
+  width: 100%;
+  background-color: aqua;
+}
+
+.date { 
+  height: 23%;
+  width: 100%;
+  background-color: rgb(84, 185, 185);
+}
+.gender { 
+  height: 23%;
+  width: 100%;
+  background-color: rgb(68, 0, 255);
+}
+.duration { 
+  height: 23%;
+  width: 100%;
+  background-color: rgb(255, 0, 106);
+}

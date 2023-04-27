@@ -19,4 +19,3 @@ modelMovies(sequelize);
 
 export const { user, movies } = sequelize.models;
 
-console.log(sequelize.models);

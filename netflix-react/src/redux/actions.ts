@@ -37,8 +37,8 @@
 //       }
 //     };
 //   };
-
-import { Action, AnyAction } from 'redux';
+import axios from "axios";
+import { Action, Dispatch , AnyAction } from 'redux';
 
 interface User {
        username: string;
@@ -53,6 +53,8 @@ interface User {
 
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
+export const GET_MOVIES = 'GET_MOVIES';
+
 
 
 export interface RegisterUserSuccessAction extends Action {
@@ -65,6 +67,20 @@ export interface LoginUserSuccessAction extends Action {
   type: typeof LOGIN_USER_SUCCESS;
   payload: UserLogin;
 }
+
+export interface Movies extends Action {
+  type: typeof GET_MOVIES;
+  payload: any;
+}
+
+
+export const GetMovies = async ():  Promise<{ type: string; payload: any }> => {
+  const res = await axios("http://localhost:3001/userss")
+  return {
+    type: GET_MOVIES,
+    payload: res,
+  };
+};
 
 
 
@@ -82,3 +98,5 @@ export const LoginUserSuccess = (user: UserLogin): LoginUserSuccessAction => {
     payload: user,
   };
 };
+
+
