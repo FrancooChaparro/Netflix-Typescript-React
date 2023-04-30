@@ -10,9 +10,9 @@ interface MyPropsCard {
 
   return (
     <div className={styles.containerCard}>
-        <div className={styles.containerCardInfo}><img src={cardProps?.background} alt="" className={styles.image}/></div>
+        <div className={styles.containerCardInfo}><img src={cardProps?.background} alt={cardProps?.title} className={styles.image}/></div>
         <div className={styles.containerCardInfo2}>
-            <div className={styles.details}><img src={cardProps?.background}  alt="" /></div>
+            <div className={styles.details}><img src={cardProps?.background}  alt={cardProps?.title} style={{ filter: "brightness(110%)"}}/></div>
             <div className={styles.details2}>
               <div className={styles.icons}>
                 <div className={styles.play}><BsFillPlayFill /></div>
@@ -26,15 +26,3 @@ interface MyPropsCard {
     </div>
   )
 }
-
-
-// BsFillPlayFill
-// MdExpandMore
-// IoAddOutline
-
-
-// interface MyPropsCard {
-//   cardProps: any
-//  }
-
-// https://api.themoviedb.org/3/discover/movie?api_key=3aa2dc2d3ba567e17745ade8603cf282&with_genres=27

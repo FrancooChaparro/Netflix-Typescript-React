@@ -1,11 +1,10 @@
 import { AnyAction } from 'redux';
-import { REGISTER_USER_SUCCESS, LOGIN_USER_SUCCESS, GET_MOVIES } from "./actions"
+import { REGISTER_USER_SUCCESS, LOGIN_USER_SUCCESS, GET_MOVIES, USER_ACTIVE } from "./actions"
 
 
 interface User {
   username: string;
   email: string;
-  password: string;
 }
 
 interface AppState {
@@ -26,6 +25,11 @@ export const Movies = (state: AppState) => state.movies;
     console.log(action, "preciso");
     
     switch (action.type) {
+      case USER_ACTIVE:
+        return {
+          ...state,
+          user: action.payload
+        };
       case REGISTER_USER_SUCCESS:
         return {
           ...state,

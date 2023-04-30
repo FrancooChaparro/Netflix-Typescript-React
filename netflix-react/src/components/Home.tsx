@@ -5,7 +5,7 @@ import Background from "../images/img1.jpg"
 import { Landing } from './Landing';
 import { GetMovies } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Movies } from '../redux/reducer';
+import { Movies, selectCounterValue } from '../redux/reducer';
 import axios from "axios";
 
 interface MyProps {
@@ -44,11 +44,13 @@ export const Home = () => {
     fetchData();
   }, [dispatch]);
 
+  
+
   return (
     <div className={styles.homeContainer}>
       <Navbar />
       <div className={styles.ContainerBackground}>
-        <img src={Background} alt="logo" className={styles.background} />
+        <img src={"https://image.tmdb.org/t/p/original/h8gHn0OzBoaefsYseUByqsmEDMY.jpg"} alt="logo" className={styles.background} />
       </div>
        <Landing title={"Trending Now"} movie={trending}/><br />
        <Landing title={"Music"} movie={Music}/> <br />

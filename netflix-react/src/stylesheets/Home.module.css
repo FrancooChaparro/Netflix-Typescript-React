@@ -5,7 +5,7 @@
 }
 
 .ContainerBackground { 
-    background-image: url("../images/img1.jpg");
+    /* background-image: url("https://image.tmdb.org/t/p/original/h8gHn0OzBoaefsYseUByqsmEDMY.jpg"); */
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;

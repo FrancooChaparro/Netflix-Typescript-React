@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { selectCounterValue } from '../redux/reducer';
+import { UserActive } from "../redux/actions"
 
 interface FormState { 
   inputValues: LoginForm
@@ -49,12 +50,13 @@ export const Loginx = () => {
           console.log(response.data.data, "Datos Completados");
 
           setTimeout(() => {
-            console.log(counterValue);
+            console.log(dispatch);
+            dispatch(UserActive(response.data.data))
             setInputValues({
                   email: "",
                   password: ""
               });
-              navigate("/Register")
+              navigate("/user")
           }, 1300)
     }
       else {

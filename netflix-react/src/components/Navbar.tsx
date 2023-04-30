@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false)
+
   return (
     <div className={styles.containerAll}>
      <div className={styles.containerLogo}>

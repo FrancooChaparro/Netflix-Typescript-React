@@ -62,7 +62,7 @@ interface AppState {
 
 export const Register = () => {
   const counterValue = useSelector(selectCounterValue);
-  console.log(counterValue);
+  console.log(counterValue, "nose");
   
   const dispatch = useDispatch();
   const regexName = /^([a-zA-Z ]+)$/i;

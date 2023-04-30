@@ -51,9 +51,15 @@ interface User {
       password: string;
     }
 
+    interface usuario {
+      username: string;
+      email: string;
+    }
+
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const GET_MOVIES = 'GET_MOVIES';
+export const USER_ACTIVE = 'USER_ACTIVE';
 
 
 
@@ -72,6 +78,13 @@ export interface Movies extends Action {
   type: typeof GET_MOVIES;
   payload: any;
 }
+
+
+export interface UserActive extends Action {
+  type: typeof USER_ACTIVE;
+  payload: any;
+}
+
 
 
 export const GetMovies = async ():  Promise<{ type: string; payload: any }> => {
@@ -100,3 +113,9 @@ export const LoginUserSuccess = (user: UserLogin): LoginUserSuccessAction => {
 };
 
 
+export const UserActive = (user: usuario): UserActive => {
+  return {
+    type: USER_ACTIVE,
+    payload: user,
+  };
+};

@@ -1,8 +1,12 @@
 import React from 'react';
 import styles from "../stylesheets/UserMenu.module.css";
 import Avatar from "../images/Netflix-avatar.png";
+import { useSelector } from 'react-redux';
+import { selectCounterValue } from '../redux/reducer';
 
 export const UserMenu = () => {
+  const userActive = useSelector(selectCounterValue)
+
   return (
     <div className={styles.containerMenu}>
         <div className={styles.containerAvatar}>
@@ -10,7 +14,7 @@ export const UserMenu = () => {
                 <img src={Avatar} alt="" />
             </div>
             <div className={styles.username}>
-                <span>Franco</span>
+                <span>{userActive?.username}</span>
             </div>
         </div>
         
