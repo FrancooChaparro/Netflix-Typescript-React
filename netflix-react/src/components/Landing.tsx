@@ -13,8 +13,7 @@ interface MyPropsCard {
  }
 
 export const Landing:  React.FC<MyProps> = ({ movie, title }) => {
-  console.log(movie, "RECIBO");
-  
+
   return (
     <div className={styles.containerAll}>
         <div className={styles.containerTitle}>

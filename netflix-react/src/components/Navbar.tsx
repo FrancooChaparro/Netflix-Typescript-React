@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styles from "../stylesheets/Navbar.module.css";
 import Logo from "../images/Netflix_Logo.png";
 import Avatar from "../images/Netflix-avatar.png";
@@ -11,19 +11,46 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false)
+  const TOP_OFFSET = 66;
+  const [showBackground, setShowBackground] = useState<boolean>(false)
+
+  useEffect(()=> { 
+    const handleScroll = () => { 
+      if (window.scrollY >= TOP_OFFSET ) {
+        setShowBackground(true)
+      } else { 
+        setShowBackground(false)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll); 
+
+    return () => { 
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }, [])
+
+
+  const handleClick = (topp: number) => {
+    window.scrollTo({
+      top: topp,
+      left: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
-    <div className={styles.containerAll}>
+    <div className={showBackground ? styles.containerAll : styles.containerAllOpacity }>
      <div className={styles.containerLogo}>
      <img src={Logo} alt="" style={{height: "52px"}}/>
      </div>
      <div className={styles.containerInfo}>
-        <Link to={"/Home"} style={{textDecoration: "none"}} onClick={() => window.scrollTo(0, 0)}><span>Home</span></Link>
-        <Link to={"/Home"} style={{textDecoration: "none"}} onClick={() => window.scrollTo(0, 300)}><span>Series</span></Link>
-        <span>Films</span>
-        <span>New & Popular</span>
-        <span>My List</span>
-        <span>Browse by Lenguages</span>
+        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(0)}><span>Home</span></Link>
+        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(300)}><span>Series</span></Link>
+        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(400)}><span>Films</span></Link>
+        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(350)}><span>New & Popular</span></Link>
+        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(600)}><span>My List</span></Link>
+        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(800)}><span>Browse by Lenguages</span></Link>
      </div>
      <div className={styles.containerUser}>
 
@@ -41,7 +68,7 @@ export const Navbar = () => {
 
         <div className={styles.abajo}>
             <div className={styles.contentes}>
-            {showMenu && <UserMenu /> }
+            {showMenu && <UserMenu type={showBackground} /> }
             </div>
         </div>
 

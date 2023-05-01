@@ -4,11 +4,17 @@ import Avatar from "../images/Netflix-avatar.png";
 import { useSelector } from 'react-redux';
 import { selectCounterValue } from '../redux/reducer';
 
-export const UserMenu = () => {
+
+interface typeProps { 
+  type: Boolean
+}
+
+
+export const UserMenu: React.FC<typeProps> = ({ type }) => {
   const userActive = useSelector(selectCounterValue)
 
   return (
-    <div className={styles.containerMenu}>
+    <div className={type ? styles.containerMenu : styles.containerMenuOpactity }>
         <div className={styles.containerAvatar}>
             <div className={styles.imagen}>
                 <img src={Avatar} alt="" />

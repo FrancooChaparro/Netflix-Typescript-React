@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Navbar } from "./Navbar";
 import styles from "../stylesheets/Home.module.css";
 import Background from "../images/img1.jpg"
@@ -21,19 +21,19 @@ interface MyProps {
   overview: String, 
   image: String,
   date: String, 
-  background: String,
+  background: string,
   gender: String
  }
 
 export const Home = () => {
   const counterValue = useSelector(Movies) || [];
   const dispatch = useDispatch()
-  
-  const terror = counterValue.filter((movie: movie) => movie.gender === "Terror") || []
-  const trending = counterValue.filter((movie: movie) => movie.gender === "Trending") || []
-  const comedy = counterValue.filter((movie: movie) => movie.gender === "Comedy") || []
-  const Music = counterValue.filter((movie: movie) => movie.gender === "Music") || []
-  const tv = counterValue.filter((movie: movie) => movie.gender === "TV") || []
+  const [num, setNum] = useState<number>(0);
+  const terror = counterValue.filter((movie: movie) => movie.gender === "Terror") || Array<movie>
+  const trending = counterValue.filter((movie: movie) => movie.gender === "Trending") || Array<movie>
+  const comedy = counterValue.filter((movie: movie) => movie.gender === "Comedy") || Array<movie>
+  const Music = counterValue.filter((movie: movie) => movie.gender === "Music") || Array<movie>
+  const tv = counterValue.filter((movie: movie) => movie.gender === "TV") || Array<movie>
 
 
   useEffect(() => {
@@ -43,14 +43,30 @@ export const Home = () => {
     };
     fetchData();
   }, [dispatch]);
-
   
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log(num);
+      
+      if(num > 19) setNum(0)
+      else setNum(num => num + 1);
+    }, 14000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const cartelera: movie = terror[num]
 
   return (
     <div className={styles.homeContainer}>
       <Navbar />
       <div className={styles.ContainerBackground}>
-        <img src={"https://image.tmdb.org/t/p/original/h8gHn0OzBoaefsYseUByqsmEDMY.jpg"} alt="logo" className={styles.background} />
+        <img src={cartelera?.background} alt="logo" className={styles.background} />
+        <div className={styles.containerData}>
+          <p className={styles.title}>{cartelera?.title}</p>
+          <p className={styles.description}>{cartelera?.overview}</p>
+        </div>
       </div>
        <Landing title={"Trending Now"} movie={trending}/><br />
        <Landing title={"Music"} movie={Music}/> <br />
