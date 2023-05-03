@@ -20,7 +20,7 @@ export const UserMenu: React.FC<typeProps> = ({ type }) => {
                 <img src={Avatar} alt="" />
             </div>
             <div className={styles.username}>
-                <span>{userActive?.username}</span>
+                <span>{userActive?.username ? userActive?.username : "Franco Chaparro"}</span>
             </div>
         </div>
         

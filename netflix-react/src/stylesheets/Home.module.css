@@ -5,7 +5,6 @@
 }
 
 .ContainerBackground { 
-    /* background-image: url("https://image.tmdb.org/t/p/original/h8gHn0OzBoaefsYseUByqsmEDMY.jpg"); */
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
@@ -19,14 +18,12 @@
 }
 
 .containerData { 
-    /* background-color: aqua; */
     color: white;
     position: absolute;
     top: 31%;
     width: 50%;
     padding-left: 29px;
-    z-index: 88; 
-    
+    z-index: 88;    
 }
 
 .title { 

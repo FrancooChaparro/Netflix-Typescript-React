@@ -2,6 +2,7 @@ import React from 'react';
 import styles from "../stylesheets/Card.module.css";
 import { BsFillPlayFill } from "react-icons/bs";
 import { BsChevronDown } from "react-icons/bs"
+
 interface MyPropsCard {
   cardProps: any
  }

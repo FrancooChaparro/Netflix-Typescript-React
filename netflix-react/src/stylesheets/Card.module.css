@@ -62,8 +62,6 @@
   display: block;
   opacity: 100;
   z-index: 99;
-  /* transform: scale(1); 
-  transform: translateY(-60px) */
   transform:scale(1)  translateY(-60px) translateX(20px) ;
 }
 

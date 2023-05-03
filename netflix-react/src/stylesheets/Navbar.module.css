@@ -39,6 +39,11 @@
     cursor: pointer;
 }
 
+.containerInfo span:hover { 
+    filter: contrast(150%) saturate(250%);
+    /* font-weight: bold; */
+}
+
 
 .containerUser {
     width: 20%;

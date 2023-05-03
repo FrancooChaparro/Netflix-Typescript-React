@@ -1,43 +1,4 @@
-// import axios, { AxiosResponse }  from "axios";
-// import { Dispatch, Action, AnyAction } from "redux";
-// import { RegisterForm } from "../types";
-// export const USER_ACTIVE = "USER_ACTIVE";
-
-
-// interface FormState { 
-//     inputValues: RegisterForm
-//   }
-
-// interface User {
-//   username: string;
-//   email: string;
-//   password: string;
-// }
-
-// type AnyActionn = /*unresolved*/ any
-
-
-
-  
-// const userRegister = async (payload: User) => {
-//     const response = await axios.post('http://localhost:3001/users', payload);
-//     return response;
-//   };
-  
-//   export const registerUser = (payload: User): AnyAction => {
-//     return async (dispatch: Dispatch<Action>) => {
-//       try {
-//         const response = await axios.post('http://localhost:3001/users', payload);
-//         dispatch({ type: 'REGISTER_USER', payload: response });
-//         return { type: 'REGISTER_USER_SUCCESS', payload: response };
-//       } catch (error) {
-//         // Manejar el error aquí si es necesario
-//         console.log(error);
-//         return { type: 'REGISTER_USER_FAILURE', payload: error };
-//       }
-//     };
-//   };
-import axios from "axios";
+import axios, { AxiosResponse }  from "axios";
 import { Action, Dispatch , AnyAction } from 'redux';
 
 interface User {
@@ -46,12 +7,12 @@ interface User {
        password: string;
      }
 
-     interface UserLogin {
+interface UserLogin {
       email: string;
       password: string;
     }
 
-    interface usuario {
+interface usuario {
       username: string;
       email: string;
     }
