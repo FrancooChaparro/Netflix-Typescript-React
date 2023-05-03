@@ -4,6 +4,7 @@
   background-color: #1b1b1b;
   height: 20vh;
   margin-right: 10px;
+
 }
 
 
@@ -144,4 +145,25 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+
+
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 48%;
+  left: 45%;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #911515;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }

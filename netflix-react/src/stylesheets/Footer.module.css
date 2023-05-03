@@ -1,0 +1,27 @@
+.containerFooter { 
+    position: absolute;
+    /* bottom: 0; */
+    height: 80px;
+    width: 100%;
+    background-color: rgb(133, 31, 31);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    color: white;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #000;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

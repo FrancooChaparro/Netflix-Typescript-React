@@ -34,9 +34,21 @@ export const Home = () => {
   const comedy = counterValue.filter((movie: movie) => movie.gender === "Comedy") || Array<movie>
   const Music = counterValue.filter((movie: movie) => movie.gender === "Music") || Array<movie>
   const tv = counterValue.filter((movie: movie) => movie.gender === "TV") || Array<movie>
+  const [loading, setLoading] = useState<boolean>(true);
+
+
+console.log(loading, "loading");
+
+
+useEffect(()=> { 
+  setTimeout(()=> { 
+    setLoading(false)
+  },100)
+},[])
 
 
   useEffect(() => {
+
     const fetchData = async () => {
       const moviesAction = await GetMovies();
       dispatch(moviesAction);
@@ -61,13 +73,13 @@ export const Home = () => {
   return (
     <div className={styles.homeContainer}>
       <Navbar />
-      <div className={styles.ContainerBackground}>
-        <img src={cartelera?.background} alt="logo" className={styles.background} />
+   {loading ? <div className={styles.center}><div className={styles.spinner}></div></div>  :  <div className={styles.ContainerBackground}>
+    <img src={cartelera?.background} alt="logo" className={styles.background}/> 
         <div className={styles.containerData}>
           <p className={styles.title}>{cartelera?.title}</p>
           <p className={styles.description}>{cartelera?.overview}</p>
-        </div>
-      </div>
+        </div> 
+      </div>}
        <Landing title={"Trending Now"} movie={trending}/><br />
        <Landing title={"Music"} movie={Music}/> <br />
        <Landing title={"Comedy"} movie={comedy}/> <br />
