@@ -50,7 +50,7 @@ export const Navbar = () => {
         <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(400)}><span>Films</span></Link>
         <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(350)}><span>New & Popular</span></Link>
         <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(600)}><span>My List</span></Link>
-        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(800)}><span>Browse by Lenguages</span></Link>
+        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(800)}><span>Premium Netflix</span></Link>
      </div>
      <div className={styles.containerUser}>
 

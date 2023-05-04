@@ -43,7 +43,7 @@ console.log(loading, "loading");
 useEffect(()=> { 
   setTimeout(()=> { 
     setLoading(false)
-  },100)
+  },1300)
 },[])
 
 
@@ -71,20 +71,22 @@ useEffect(()=> {
   const cartelera: movie = terror[num]
 
   return (
-    <div className={styles.homeContainer}>
+    <div>
+    {loading ? <div className={styles.center}><div className={styles.spinner}></div></div>  :   <div className={styles.homeContainer}>
       <Navbar />
-   {loading ? <div className={styles.center}><div className={styles.spinner}></div></div>  :  <div className={styles.ContainerBackground}>
+   <div className={styles.ContainerBackground}>
     <img src={cartelera?.background} alt="logo" className={styles.background}/> 
         <div className={styles.containerData}>
           <p className={styles.title}>{cartelera?.title}</p>
           <p className={styles.description}>{cartelera?.overview}</p>
         </div> 
-      </div>}
+      </div>
        <Landing title={"Trending Now"} movie={trending}/><br />
        <Landing title={"Music"} movie={Music}/> <br />
        <Landing title={"Comedy"} movie={comedy}/> <br />
        <Landing title={"Terror"} movie={terror}/> <br />
        <Landing title={"Programas TV"} movie={tv}/>
+    </div> }
     </div>
   )
 }

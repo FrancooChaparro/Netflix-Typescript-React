@@ -2,7 +2,7 @@ import { Router, Request, Response } from "express";
 import { user } from "../../db";
 import { movies } from "../../db";
 import axios from "axios";
-
+import { Op } from "sequelize";
 const router = Router();
 
 router.post("/users", async (req: Request, res: Response) => {
@@ -140,3 +140,67 @@ router.get("/movies", async (req: Request, res: Response) => {
     return res.json({ msg: `Error 404 -${error}` });
   }
 });
+
+
+
+// Ruta busco movie por query si hay, sino traigo todas las movie
+router.get("/movie", async (req, res) => {
+  const { name } = req.query;
+  let moviesQuery
+  const regex_FullText = /^([a-zA-Z ]+)/i;
+
+
+  try {
+    if (name) {
+      if (name === "") {
+        moviesQuery= await movies.findAll()
+        res.status(200).json({
+          status: true,
+          result: moviesQuery
+        });
+      } else {
+        if (typeof name == "string") {
+
+          moviesQuery= await movies.findAll({
+            where: {
+                title: { [Op.iLike]: `%${name}%` },
+            }})
+
+          if (moviesQuery.length == 0) {
+            res.status(500).json({
+              status: false,
+              msg: `No se encontro ningun pais con el atributo ${name}`,
+              errorCode: 12
+            })
+
+          } else {
+            res.status(200).json({
+              status: true,
+              result: moviesQuery
+            });
+          }
+        } else {
+          res.status(500).json({
+            status: false,
+            msg: `Formato de busqueda invalido`,
+            errorCode: 14
+          });
+        }
+      }
+    } else {
+      moviesQuery = await await movies.findAll()
+      res.status(200).json({
+        status: true,
+        result: moviesQuery
+      });
+    }
+
+
+  } catch (error) {
+    res.status(400).json({
+      status: false,
+      msg: `Entro al catch, ${error}`,
+      errorCode: 400
+    });
+  }
+})

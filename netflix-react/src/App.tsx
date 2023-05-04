@@ -20,6 +20,7 @@ function App() {
       <Route path='/Login' element={<Loginx />} />
       <Route path='/User' element={<Watching />}  />
       </Routes>  
+    <Footer />
     </div>
   );
 }

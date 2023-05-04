@@ -1,7 +1,7 @@
 .containerFooter { 
     position: absolute;
     /* bottom: 0; */
-    height: 80px;
+    height: 150px;
     width: 100%;
     background-color: rgb(133, 31, 31);
     display: flex;
@@ -20,8 +20,95 @@
   animation: spin 0.8s linear infinite;
 }
 
+.spinner2 {
+  width: 350px;
+  height: 150px;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+.ContactMeComponent_container_all {
+  position: absolute;
+  background-color: #1b1b1b;
+  width: 100%;
+  height: 120px;
+
+  box-shadow: 0px 0px 50px rgb(0, 0, 0);
+  padding: 30px 0px 30px 0px;
+
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.ContactMeComponent_container_all h1 {
+  text-align: center;
+  margin: 0px;
+  color: white;
+  padding: 0px;
+  letter-spacing: -1px;
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+.ContactMeComponent_seccion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding-top: 35px;
+}
+
+.ContactMeComponent_icon {
+  font-size: 38px;
+  margin: 0px 30px;
+  color: white;
+  transition: 0.2s;
+}
+
+.ContactMeComponent_icon:hover {
+  color: rgb(133, 130, 130);
+  transition: 0.2s;
+}
+
+@media screen and (max-width: 992px) {
+  .ContactMeComponent_container_all {
+      padding: 30px 0px 15px 0px;
+  }
+  .ContactMeComponent_container_all h1 {
+      font-size: 1.9rem;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .ContactMeComponent_container_all h1 {
+      font-size: 1.8rem;
+  }
+
+  .ContactMeComponent_icon {
+      font-size: 36px;
+  }
+
+}
+@media screen and (max-width: 500px) {
+  .ContactMeComponent_icon {
+      margin: 0px 28px;
+  }
+
+}
+
+@media screen and (max-width: 375px) {
+  .ContactMeComponent_container_all h1 {
+      font-size: 1.6rem;
+  }
+
+  .ContactMeComponent_icon {
+      font-size: 30px;
+      margin: 0px 22px;
+      transition: 0.2s;
   }
 }
