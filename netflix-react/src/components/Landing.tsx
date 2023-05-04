@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "../stylesheets/Landing.module.css";
 import { Card } from './Card';
-import { MovieObject } from "../types";
+import { MovieObject } from "../types"
 
 interface MyProps {
  movie: Array<MovieObject>,
