@@ -49,7 +49,7 @@ export interface UserActive extends Action {
 
 
 export const GetMovies = async ():  Promise<{ type: string; payload: any }> => {
-  const res = await axios("http://localhost:3001/userss")
+  const res = await axios("http://localhost:3001/allMovies")
   return {
     type: GET_MOVIES,
     payload: res,

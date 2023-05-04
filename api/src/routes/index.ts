@@ -60,7 +60,7 @@ router.post("/users", async (req: Request, res: Response) => {
 //   }
 // });
 
-router.get("/userss", async (req: Request, res: Response) => {
+router.get("/allMovies", async (req: Request, res: Response) => {
   try {
     const moviess = await movies.findAll();
 
@@ -144,7 +144,7 @@ router.get("/movies", async (req: Request, res: Response) => {
 
 
 // Ruta busco movie por query si hay, sino traigo todas las movie
-router.get("/movie", async (req, res) => {
+router.get("/movie", async (req: Request, res: Response) => {
   const { name } = req.query;
   let moviesQuery
   const regex_FullText = /^([a-zA-Z ]+)/i;
@@ -169,7 +169,7 @@ router.get("/movie", async (req, res) => {
           if (moviesQuery.length == 0) {
             res.status(500).json({
               status: false,
-              msg: `No se encontro ningun pais con el atributo ${name}`,
+              msg: `No se encontro ninguna pelicula llamada ${name}`,
               errorCode: 12
             })
 

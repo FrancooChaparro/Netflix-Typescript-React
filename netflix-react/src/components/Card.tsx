@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import styles from "../stylesheets/Card.module.css";
 import { BsFillPlayFill } from "react-icons/bs";
-import { BsChevronDown } from "react-icons/bs"
+import { BsChevronDown } from "react-icons/bs";
+import { MovieObject } from "../types"
+
 
 interface MyPropsCard {
-  cardProps: any
+  cardProps: MovieObject,
+  isNew: boolean
  }
  
- export const Card:  React.FC<MyPropsCard> = ({ cardProps }) => {
+ export const Card:  React.FC<MyPropsCard> = ({ cardProps, isNew }) => {
   const [loading, setLoading] = useState<boolean>(true);
-
+  
 
 
   const handleImageLoad = () => {
@@ -25,7 +28,7 @@ interface MyPropsCard {
     
     <div className={styles.containerCard}> 
          <div className={styles.containerCardInfo}>
-         <img src={cardProps?.background} alt={cardProps?.title} className={styles.image}  onLoad={handleImageLoad}
+         <img src={cardProps.background} alt={cardProps?.title} className={styles.image}  onLoad={handleImageLoad}
     onError={handleImageError} /> 
         </div>
         {loading ? <div className={styles.spinner}></div> : <div className={styles.containerCardInfo2}>
@@ -35,8 +38,8 @@ interface MyPropsCard {
                 <div className={styles.play}><BsFillPlayFill /></div>
                 <div className={styles.more}><BsChevronDown /></div>
               </div>
-              <div className={styles.date}><span style={{color: "greenyellow"}}>New</span><span>{cardProps?.date}</span></div>
-              <div className={styles.duration}><span>{cardProps?.title}</span></div>
+              <div className={styles.date}>{isNew && <span style={{color: "greenyellow"}}>New</span>}<span>{cardProps?.date}</span></div>
+              <div className={styles.duration}><span>{cardProps?.title.substring(0,37)}</span></div>
               <div className={styles.gender}><span>{cardProps?.gender}</span></div>
             </div>
         </div> }

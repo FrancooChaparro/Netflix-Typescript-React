@@ -1,43 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import { Navbar } from "./Navbar";
 import styles from "../stylesheets/Home.module.css";
-import Background from "../images/img1.jpg"
 import { Landing } from './Landing';
 import { GetMovies } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { Movies, selectCounterValue } from '../redux/reducer';
-import axios from "axios";
+import { Movies } from '../redux/reducer';
+import { MovieObject } from "../types";
 
-interface MyProps {
-  movie: any,
-  title: String
- }
-
- interface movie { 
-  id: String,
-  idi: Number, 
-  title: String, 
-  language: String,
-  overview: String, 
-  image: String,
-  date: String, 
-  background: string,
-  gender: String
- }
 
 export const Home = () => {
   const counterValue = useSelector(Movies) || [];
   const dispatch = useDispatch()
   const [num, setNum] = useState<number>(0);
-  const terror = counterValue.filter((movie: movie) => movie.gender === "Terror") || Array<movie>
-  const trending = counterValue.filter((movie: movie) => movie.gender === "Trending") || Array<movie>
-  const comedy = counterValue.filter((movie: movie) => movie.gender === "Comedy") || Array<movie>
-  const Music = counterValue.filter((movie: movie) => movie.gender === "Music") || Array<movie>
-  const tv = counterValue.filter((movie: movie) => movie.gender === "TV") || Array<movie>
+  const terror = counterValue.filter((movie: MovieObject) => movie.gender === "Terror") || Array<MovieObject>
+  const trending = counterValue.filter((movie: MovieObject) => movie.gender === "Trending") || Array<MovieObject>
+  const comedy = counterValue.filter((movie: MovieObject) => movie.gender === "Comedy") || Array<MovieObject>
+  const Music = counterValue.filter((movie: MovieObject) => movie.gender === "Music") || Array<MovieObject>
+  const tv = counterValue.filter((movie: MovieObject) => movie.gender === "TV") || Array<MovieObject>
   const [loading, setLoading] = useState<boolean>(true);
-
-
-console.log(loading, "loading");
 
 
 useEffect(()=> { 
@@ -48,7 +28,6 @@ useEffect(()=> {
 
 
   useEffect(() => {
-
     const fetchData = async () => {
       const moviesAction = await GetMovies();
       dispatch(moviesAction);
@@ -58,21 +37,20 @@ useEffect(()=> {
   
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      console.log(num);
-      
-      if(num > 19) setNum(0)
+    const interval = setInterval(() => {   
+      if(num > 18) setNum(num => num - 1);
       else setNum(num => num + 1);
     }, 14000);
-
+    
     return () => clearInterval(interval);
   }, []);
-
-  const cartelera: movie = terror[num]
+  
+  
+  const cartelera: MovieObject = terror[num]
 
   return (
     <div>
-    {loading ? <div className={styles.center}><div className={styles.spinner}></div></div>  :   <div className={styles.homeContainer}>
+    {loading ? <div className={styles.center}><div className={styles.spinner}></div></div>  :  <div className={styles.homeContainer}>
       <Navbar />
    <div className={styles.ContainerBackground}>
     <img src={cartelera?.background} alt="logo" className={styles.background}/> 
@@ -81,11 +59,11 @@ useEffect(()=> {
           <p className={styles.description}>{cartelera?.overview}</p>
         </div> 
       </div>
-       <Landing title={"Trending Now"} movie={trending}/><br />
-       <Landing title={"Music"} movie={Music}/> <br />
-       <Landing title={"Comedy"} movie={comedy}/> <br />
-       <Landing title={"Terror"} movie={terror}/> <br />
-       <Landing title={"Programas TV"} movie={tv}/>
+       <Landing isNew={true} title={"Trending Now"} movie={trending}/><br />
+       <Landing isNew={false} title={"Music"} movie={Music}/> <br />
+       <Landing isNew={false}title={"Comedy"} movie={comedy}/> <br />
+       <Landing isNew={false}title={"Terror"} movie={terror}/> <br />
+       <Landing isNew={false}title={"Programas TV"} movie={tv}/>
     </div> }
     </div>
   )
