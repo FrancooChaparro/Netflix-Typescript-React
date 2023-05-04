@@ -2,14 +2,14 @@ import React from 'react';
 import styles from "../stylesheets/Watching.module.css";
 import Logo from "../images/Netflix-avatar.png";
 import { Link } from "react-router-dom";
-import { selectCounterValue } from '../redux/reducer';
+import { UserActive } from '../redux/reducer';
 import { useSelector } from 'react-redux';
+import { User } from "../types";
 
 
 export const Watching = () => {
-  const UserActive = useSelector(selectCounterValue)
-  console.log(UserActive, "User");
-  
+  const ActiveUser: User | null = useSelector(UserActive)
+
   return (
     <div className={styles.containerAll}>
         <div className={styles.container}>
@@ -18,7 +18,7 @@ export const Watching = () => {
             </div>
             <div className={styles.bot}>
                <Link to={"/Home"}><img src={Logo} alt="Logo" className={styles.Hover}/></Link>
-               <Link to={"/Home"} style={{color: "white", textDecoration: "none"}}> <h4>{UserActive?.username ? UserActive?.username : "Franco Chaparro"}</h4></Link>
+               <Link to={"/Home"} style={{color: "white", textDecoration: "none"}}> <h4>{ActiveUser?.username ? ActiveUser?.username : "Franco Chaparro"}</h4></Link>
             </div>
         </div>
     </div>

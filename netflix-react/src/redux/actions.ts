@@ -1,21 +1,6 @@
 import axios, { AxiosResponse }  from "axios";
-import { Action, Dispatch , AnyAction } from 'redux';
-
-interface User {
-       username: string;
-       email: string;
-       password: string;
-     }
-
-interface UserLogin {
-      email: string;
-      password: string;
-    }
-
-interface usuario {
-      username: string;
-      email: string;
-    }
+import { Action } from 'redux';
+import { LoginForm, RegisterForm, User } from "../types";
 
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
@@ -23,16 +8,15 @@ export const GET_MOVIES = 'GET_MOVIES';
 export const USER_ACTIVE = 'USER_ACTIVE';
 
 
-
 export interface RegisterUserSuccessAction extends Action {
   type: typeof REGISTER_USER_SUCCESS;
-  payload: User;
+  payload: RegisterForm;
 }
 
 
 export interface LoginUserSuccessAction extends Action {
   type: typeof LOGIN_USER_SUCCESS;
-  payload: UserLogin;
+  payload: User;
 }
 
 export interface Movies extends Action {
@@ -41,24 +25,17 @@ export interface Movies extends Action {
 }
 
 
-export interface UserActive extends Action {
-  type: typeof USER_ACTIVE;
-  payload: any;
-}
-
-
-
-export const GetMovies = async ():  Promise<{ type: string; payload: any }> => {
+export const GetMovies = async ():  Promise<Movies> => {
   const res = await axios("http://localhost:3001/allMovies")
   return {
     type: GET_MOVIES,
-    payload: res,
+    payload: res.data.movies,
   };
 };
 
 
 
-export const registerUserSuccess = (user: User): RegisterUserSuccessAction => {
+export const registerUserSuccess = (user: RegisterForm): RegisterUserSuccessAction => {
   return {
     type: REGISTER_USER_SUCCESS,
     payload: user,
@@ -66,17 +43,9 @@ export const registerUserSuccess = (user: User): RegisterUserSuccessAction => {
 };
 
 
-export const LoginUserSuccess = (user: UserLogin): LoginUserSuccessAction => {
+export const LoginUserSuccess = (user: User): LoginUserSuccessAction => {
   return {
     type: LOGIN_USER_SUCCESS,
-    payload: user,
-  };
-};
-
-
-export const UserActive = (user: usuario): UserActive => {
-  return {
-    type: USER_ACTIVE,
     payload: user,
   };
 };

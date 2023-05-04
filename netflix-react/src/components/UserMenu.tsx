@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "../stylesheets/UserMenu.module.css";
 import Avatar from "../images/Netflix-avatar.png";
 import { useSelector } from 'react-redux';
-import { selectCounterValue } from '../redux/reducer';
+import { UserActive } from '../redux/reducer';
 
 
 interface typeProps { 
@@ -11,7 +11,7 @@ interface typeProps {
 
 
 export const UserMenu: React.FC<typeProps> = ({ type }) => {
-  const userActive = useSelector(selectCounterValue)
+  const userActive = useSelector(UserActive)
 
   return (
     <div className={type ? styles.containerMenu : styles.containerMenuOpactity }>

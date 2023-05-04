@@ -1,54 +1,45 @@
-import { AnyAction } from 'redux';
-import { REGISTER_USER_SUCCESS, LOGIN_USER_SUCCESS, GET_MOVIES, USER_ACTIVE } from "./actions"
+import { AnyAction } from "redux";
+import {
+  REGISTER_USER_SUCCESS,
+  LOGIN_USER_SUCCESS,
+  GET_MOVIES
+} from "./actions";
+import { MovieObject, User, AppState } from "../types";
 
 
-interface User {
-  username: string;
-  email: string;
-}
-
-interface AppState {
-  user: User | null;
-  movies: []
-}
-
+// Estado Global
 const initialState: AppState = {
   user: null,
-  movies: []
+  movies: [],
 };
-  
-export const selectCounterValue = (state: AppState) => state.user;
+
+
+// Exporto estados
+export const UserActive = (state: AppState) => state.user;
 export const Movies = (state: AppState) => state.movies;
 
 
-  const rootReducer =  (state = initialState, action: AnyAction): AppState  => {
-    console.log(action, "preciso");
-    
-    switch (action.type) {
-      case USER_ACTIVE:
-        return {
-          ...state,
-          user: action.payload
-        };
-      case REGISTER_USER_SUCCESS:
-        return {
-          ...state,
-        };
-        case LOGIN_USER_SUCCESS:
-          return {
-            ...state,
-            user: action.payload,
-          };
-          case GET_MOVIES:
-            const res = action.payload.data.movies
-            return { 
-              ...state, 
-              movies: res
-            }
-      default:
-        return state;
-    }
-  };
-  
-  export default rootReducer;
-  
+// Reducer
+const rootReducer = (state = initialState, action: AnyAction): AppState => {
+  switch (action.type) {
+
+    case REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+      };
+    case LOGIN_USER_SUCCESS:  
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case GET_MOVIES:
+      return {
+        ...state,
+        movies: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export default rootReducer;

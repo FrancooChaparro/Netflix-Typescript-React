@@ -3,27 +3,19 @@ import styles from "../stylesheets/Register.module.css";
 import logo from "../images/Netflix_Logo.png";
 import { LoginForm } from "../types";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
-import { selectCounterValue } from '../redux/reducer';
-import { UserActive } from "../redux/actions"
-
-interface FormState { 
-  inputValues: LoginForm
-}
-
+import { LoginUserSuccess } from "../redux/actions";
 
 export const Loginx = () => {
   const dispatch = useDispatch();
   const [errormsg, setErrormsg] = useState<boolean>(false)
   const navigate = useNavigate()
-  const [inputValues, setInputValues] = useState<FormState["inputValues"]>({ 
+  const [open, setOpen] = useState<boolean>(true);
+  const [inputValues, setInputValues] = useState<LoginForm>({ 
     email: "",
     password: ""
   })
-  const counterValue = useSelector(selectCounterValue);
-  const [open, setOpen] = useState<boolean>(true);
-
 
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -50,8 +42,7 @@ export const Loginx = () => {
           console.log(response.data.data, "Datos Completados");
 
           setTimeout(() => {
-            console.log(dispatch);
-            dispatch(UserActive(response.data.data))
+            dispatch(LoginUserSuccess(response.data.data))
             setInputValues({
                   email: "",
                   password: ""
@@ -128,10 +119,6 @@ export const Loginx = () => {
 
         </div>
        </div>
-
-
-
-
 
 
       </div>

@@ -22,44 +22,6 @@ router.post("/users", async (req: Request, res: Response) => {
 });
 
 
-
-
-// router.get("/movies", async (req: Request, res: Response) => {
-//   const API_URL = "https://api.themoviedb.org/3";
-//   const API_KEY = "3aa2dc2d3ba567e17745ade8603cf282";
-//   const IMAGE_PATH = "https://image.tmdb.org/t/p/original";
-//   const URL_IMAGE = "https://image.tmdb.org/t/p/original";
-
-//   try {
-//     const {
-//       data: { results },
-//     } = await axios.get(`${API_URL}/discover/movie`, {
-//       params: {
-//         api_key: API_KEY,
-//         page: 5,
-//       },
-//     });
-
-//     results.map((movie: any) => {
-//       movies.create({
-//         idi: movie.id,
-//         title: movie.title,
-//         language: movie.original_language,
-//         overview: movie.overview.substring(0, 245),
-//         image: `${URL_IMAGE + movie.poster_path}`,
-//         data: movie.release_date,
-//       });
-//     });
-
-//     return res.json({
-//       msg: `User create succesfully`,
-//       movies: "databaseLoaded",
-//     });
-//   } catch (error) {
-//     return res.json({ msg: `Error 404 -${error}` });
-//   }
-// });
-
 router.get("/allMovies", async (req: Request, res: Response) => {
   try {
     const moviess = await movies.findAll();
@@ -72,7 +34,7 @@ router.get("/allMovies", async (req: Request, res: Response) => {
   }
 });
 
-
+// Login Post
 router.post("/Login", async (req: Request, res: Response) => { 
   try {
     const { email, password } = req.body;
@@ -103,7 +65,7 @@ router.post("/Login", async (req: Request, res: Response) => {
 export default router;
 
 
-
+// Cargo 20 movie por click, por params puedo modificar la categoria del movie
 router.get("/movies", async (req: Request, res: Response) => {
   const API_URL = "https://api.themoviedb.org/3";
   const API_KEY = "3aa2dc2d3ba567e17745ade8603cf282";
@@ -188,7 +150,7 @@ router.get("/movie", async (req: Request, res: Response) => {
         }
       }
     } else {
-      moviesQuery = await await movies.findAll()
+      moviesQuery = await movies.findAll()
       res.status(200).json({
         status: true,
         result: moviesQuery

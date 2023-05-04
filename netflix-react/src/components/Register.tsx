@@ -6,12 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { registerUserSuccess  } from "../redux/actions"
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios"
-import { selectCounterValue } from '../redux/reducer';
-
-
-interface FormState { 
-  inputValues: RegisterForm
-}
+import { UserActive } from '../redux/reducer';
 
 function validate (input: RegisterForm) {
   let errors = {
@@ -56,20 +51,13 @@ if (!input.email) {
   return errors;
 };
 
-interface AppState {
-  user: RegisterForm | null;
-}
-
 export const Register = () => {
-  const counterValue = useSelector(selectCounterValue);
-  console.log(counterValue, "nose");
-  
   const dispatch = useDispatch();
   const regexName = /^([a-zA-Z ]+)$/i;
   const regexPassword = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/ 
   const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
   const navigate = useNavigate()
-  const [inputValues, setInputValues] = useState<FormState["inputValues"]>({ 
+  const [inputValues, setInputValues] = useState<RegisterForm>({ 
     username: "",
     email: "",
     password: ""
@@ -190,15 +178,3 @@ export const Register = () => {
     </div>
   )
 }
-
-{/* <form action=""  onSubmit={e => handleSubmit(e)}>
-              <input className={(errors.username && inputValues.username)  ? styles.inputsError : styles.inputs} onChange={handleChange} value={inputValues.username} name='username' type="text" placeholder='Username' />
-              {(errors.username && inputValues.username.length > 0 ) && (<span className={styles.spanError}>{errors.username}</span>)}
-              <input className={(errors.email && inputValues.email)  ? styles.inputsError : styles.inputs} onChange={handleChange} value={inputValues.email} name='email' type="text" placeholder='Email' />
-              {(errors.email && inputValues.email.length > 0 ) && (<span className={styles.spanError}>{errors.email}</span>)}
-              <input className={(errors.password && inputValues.password) ? styles.inputsError : styles.inputs} onChange={handleChange} value={inputValues.password} name="password" type="password" placeholder='Password'/>
-              {(errors.password && inputValues.password.length > 0 ) && (<span className={styles.spanError}>{errors.password}</span>)}
-              <div>
-                <button type='submit' className={styles.btn}>Sign up</button>
-              </div>
-            </form> */}
