@@ -22,7 +22,6 @@ export const Movies = (state: AppState) => state.movies;
 // Reducer
 const rootReducer = (state = initialState, action: AnyAction): AppState => {
   switch (action.type) {
-
     case REGISTER_USER_SUCCESS:
       return {
         ...state,

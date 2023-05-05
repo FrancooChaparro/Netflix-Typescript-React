@@ -3,7 +3,13 @@ import { user } from "../../db";
 import { movies } from "../../db";
 import axios from "axios";
 import { Op } from "sequelize";
+import { User } from "./types";
 const router = Router();
+
+// Perfeccionar register
+// Login Bcript
+// RegexString ALLmovies
+
 
 router.post("/users", async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
@@ -25,7 +31,8 @@ router.post("/users", async (req: Request, res: Response) => {
 router.get("/allMovies", async (req: Request, res: Response) => {
   try {
     const moviess = await movies.findAll();
-
+    console.log(moviess);
+    
     return res.json({ msg: "statusTrue ", movies: moviess });
 
   } catch (error) {
@@ -39,17 +46,19 @@ router.post("/Login", async (req: Request, res: Response) => {
   try {
     const { email, password } = req.body;
     const usuario = await user.findOne({ where: { email: `${email}` } });
-    if (!usuario) return res.json({ msg: 'User not found',success: false, });
+    
+    if (!usuario) return res.json({ msg: 'User not found',success: false });
 
-    // const checkPassword = await compare(password, usuario.password);
+    //  const checkPassword = await compare(password, usuario.password);
+    if (usuario.dataValues.password !== password) return res.json({ msg: 'Password Invalid',success: false });
 
     if (usuario) {
-      const finallya =  {
+      const finallyData: User =  {
         username : usuario.dataValues.username, 
         email: usuario.dataValues.email
       }
       res.status(200).send({
-        data: finallya,
+        data: finallyData,
         success: true,
       });
     }

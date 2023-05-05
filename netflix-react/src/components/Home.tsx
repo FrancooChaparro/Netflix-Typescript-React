@@ -9,14 +9,14 @@ import { MovieObject } from "../types";
 
 
 export const Home = () => {
-  const counterValue = useSelector(Movies) || [];
+  const AllMovies: Array<MovieObject> | [] = useSelector(Movies) 
   const dispatch = useDispatch()
   const [num, setNum] = useState<number>(0);
-  const terror = counterValue.filter((movie: MovieObject) => movie.gender === "Terror") || Array<MovieObject>
-  const trending = counterValue.filter((movie: MovieObject) => movie.gender === "Trending") || Array<MovieObject>
-  const comedy = counterValue.filter((movie: MovieObject) => movie.gender === "Comedy") || Array<MovieObject>
-  const Music = counterValue.filter((movie: MovieObject) => movie.gender === "Music") || Array<MovieObject>
-  const tv = counterValue.filter((movie: MovieObject) => movie.gender === "TV") || Array<MovieObject>
+  const terror: Array<MovieObject> | [] = AllMovies.filter((movie: MovieObject) => movie.gender === "Terror")
+  const trending: Array<MovieObject> | [] = AllMovies.filter((movie: MovieObject) => movie.gender === "Trending") 
+  const comedy: Array<MovieObject> | [] = AllMovies.filter((movie: MovieObject) => movie.gender === "Comedy") 
+  const Music: Array<MovieObject> | [] = AllMovies.filter((movie: MovieObject) => movie.gender === "Music") 
+  const tv: Array<MovieObject> | [] = AllMovies.filter((movie: MovieObject) => movie.gender === "TV") 
   const [loading, setLoading] = useState<boolean>(true);
 
 

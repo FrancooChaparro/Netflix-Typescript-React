@@ -17,7 +17,7 @@ export const UserMenu: React.FC<typeProps> = ({ type }) => {
     <div className={type ? styles.containerMenu : styles.containerMenuOpactity }>
         <div className={styles.containerAvatar}>
             <div className={styles.imagen}>
-                <img src={Avatar} alt="" />
+                <img src={Avatar} alt="Avatar" />
             </div>
             <div className={styles.username}>
                 <span>{userActive?.username ? userActive?.username : "Franco Chaparro"}</span>
