@@ -9,8 +9,8 @@ import { LoginUserSuccess } from "../redux/actions";
 
 export const Loginx = () => {
   const dispatch = useDispatch();
-  const [errormsg, setErrormsg] = useState<boolean>(false)
-  const navigate = useNavigate()
+  const [errormsg, setErrormsg] = useState<boolean>(false);
+  const navigate = useNavigate();
   const [open, setOpen] = useState<boolean>(true);
   const [inputValues, setInputValues] = useState<LoginForm>({ 
     email: "",
