@@ -5,7 +5,7 @@ import { SiGmail, SiGithub, SiLinkedin, SiWhatsapp } from "react-icons/si";
 export const Footer = () => {
     return (
         <div className={styles.ContactMeComponent_container_all}>
-            <h1>CONTACTAME</h1>
+            <h1>CONTACTO</h1>
             <div className={styles.ContactMeComponent_seccion} >
                 <a href="mailto:francoo_chaparro@hotmail.com" rel="noopener noreferrer" target="_blank">
                     <SiGmail className={styles.ContactMeComponent_icon} />

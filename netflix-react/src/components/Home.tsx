@@ -6,6 +6,7 @@ import { GetMovies } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Movies } from '../redux/reducer';
 import { MovieObject } from "../types";
+import { Footer } from './Footer';
 
 
 export const Home = () => {
@@ -50,7 +51,7 @@ useEffect(()=> {
 
   return (
     <div>
-    {loading ? <div className={styles.center}><div className={styles.spinner}></div></div>  :  <div className={styles.homeContainer}>
+    {loading ? <div className={styles.center}><div className={styles.spinner}></div></div> : <div className={styles.homeContainer}>
       <Navbar />
    <div className={styles.ContainerBackground}>
     <img src={cartelera?.background} alt="logo" className={styles.background}/> 
@@ -65,6 +66,7 @@ useEffect(()=> {
        <Landing isNew={false}title={"Terror"} movie={terror}/> <br />
        <Landing isNew={false}title={"Programas TV"} movie={tv}/>
     </div> }
+    <Footer />
     </div>
   )
 }

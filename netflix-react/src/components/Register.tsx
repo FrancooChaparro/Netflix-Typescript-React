@@ -63,6 +63,8 @@ export const Register = () => {
     password: ""
   })
 
+
+
   const [errors, setErrors] = useState({
     username: "",
     email: "",

@@ -25,7 +25,7 @@ export interface Movies extends Action {
 }
 
 
-export const GetMovies = async ():  Promise<Movies> => {
+export const GetMovies = async (): Promise<Movies> => {
   const res = await axios("http://localhost:3001/allMovies")
   return {
     type: GET_MOVIES,
