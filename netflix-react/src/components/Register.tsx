@@ -5,7 +5,7 @@ import { RegisterForm } from "../types";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUserSuccess  } from "../redux/actions"
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios"
+import axios from "axios";
 import { UserActive } from '../redux/reducer';
 
 function validate (input: RegisterForm) {

@@ -6,6 +6,8 @@ export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const GET_MOVIES = 'GET_MOVIES';
 export const USER_ACTIVE = 'USER_ACTIVE';
+export const MOVIE_BY_NAME = 'MOVIE_BY_NAME';
+
 
 
 export interface RegisterUserSuccessAction extends Action {
@@ -24,7 +26,25 @@ export interface Movies extends Action {
   payload: any;
 }
 
+export interface MoviesByName extends Action {
+  type: typeof MOVIE_BY_NAME;
+  payload: any;
+}
 
+export const getMovieName = async (name: string) => { 
+   let res = await axios.get(`http://localhost:3001/movie?name=${name}`);
+   if (res.status) {
+     return {
+      type: MOVIE_BY_NAME,
+      payload: res.data.result
+  };
+   } else { 
+    return {
+      type: MOVIE_BY_NAME,
+      payload: []
+   }
+}
+}
 export const GetMovies = async (): Promise<Movies> => {
   const res = await axios("http://localhost:3001/allMovies")
   return {

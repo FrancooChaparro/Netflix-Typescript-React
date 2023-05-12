@@ -2,7 +2,8 @@ import { AnyAction } from "redux";
 import {
   REGISTER_USER_SUCCESS,
   LOGIN_USER_SUCCESS,
-  GET_MOVIES
+  GET_MOVIES,
+  MOVIE_BY_NAME
 } from "./actions";
 import { MovieObject, User, AppState } from "../types";
 
@@ -11,12 +12,14 @@ import { MovieObject, User, AppState } from "../types";
 const initialState: AppState = {
   user: null,
   movies: [],
+  allMovies: []
 };
 
 
 // Exporto estados
 export const UserActive = (state: AppState) => state.user;
 export const Movies = (state: AppState) => state.movies;
+export const movieName = (state: AppState) => state.allMovies
 
 
 // Reducer
@@ -36,6 +39,11 @@ const rootReducer = (state = initialState, action: AnyAction): AppState => {
         ...state,
         movies: action.payload,
       };
+      case MOVIE_BY_NAME: 
+      return { 
+        ...state, 
+        allMovies: action.payload
+      }
     default:
       return state;
   }

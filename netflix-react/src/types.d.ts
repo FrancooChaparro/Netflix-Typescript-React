@@ -10,6 +10,7 @@ export interface LoginForm extends Omit<RegisterForm, 'username'> {} //  EMAIL Y
 export interface AppState {
     user: User | null;
     movies: Array<MovieObject>;
+    allMovies: Array<MovieObject> | [];
   }
 
 export interface MovieObject { 
