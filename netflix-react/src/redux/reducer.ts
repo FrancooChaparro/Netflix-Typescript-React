@@ -3,7 +3,8 @@ import {
   REGISTER_USER_SUCCESS,
   LOGIN_USER_SUCCESS,
   GET_MOVIES,
-  MOVIE_BY_NAME
+  MOVIE_BY_NAME,
+  MOVIE_FILTER
 } from "./actions";
 import { MovieObject, User, AppState } from "../types";
 
@@ -39,10 +40,15 @@ const rootReducer = (state = initialState, action: AnyAction): AppState => {
         ...state,
         movies: action.payload,
       };
-      case MOVIE_BY_NAME: 
+      case MOVIE_BY_NAME:   
       return { 
         ...state, 
         allMovies: action.payload
+      }
+      case MOVIE_FILTER: 
+      return { 
+        ...state, 
+        allMovies: state.movies.filter(e => e.gender == action.payload)
       }
     default:
       return state;

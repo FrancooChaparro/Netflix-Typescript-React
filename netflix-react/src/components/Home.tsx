@@ -28,13 +28,13 @@ useEffect(()=> {
 },[])
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const moviesAction = await GetMovies();
-      dispatch(moviesAction);
-    };
-    fetchData();
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const moviesAction = await GetMovies();
+  //     dispatch(moviesAction);
+  //   };
+  //   fetchData();
+  // }, [dispatch]);
   
 
   useEffect(() => {

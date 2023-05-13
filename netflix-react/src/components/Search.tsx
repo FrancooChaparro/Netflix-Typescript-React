@@ -3,24 +3,33 @@ import styles from "../stylesheets/Search.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Movies, movieName } from '../redux/reducer';
 import { MovieObject } from "../types";
-import { GetMovies, getMovieName } from '../redux/actions';
+import { getMovieName, MovieFilter, GetMovies } from '../redux/actions';
 
 
 export const Search = () => {
-  let AllMovies: Array<MovieObject> | [] = useSelector(Movies);
   let movie: Array<MovieObject> | [] = useSelector(movieName);
   const [load, setLoad] = useState<boolean>(true)
   const dispatch = useDispatch()
-  console.log(AllMovies);
-  console.log(movie, "Movie");
   const [countrie, setCountrie] = useState<string>("");
+  console.log(movie);
+  const [nameTitle, setnameTitle] = useState<string>("Peliculas");
 
 
   const countrieName = (e:React.ChangeEvent<HTMLInputElement>): void => {
     setCountrie(e.target.value);
   }
 
-
+  const FilterMovie = (e: React.MouseEvent<HTMLButtonElement>) => { 
+    setLoad(true)
+    setTimeout(()=> { 
+      setLoad(false)
+    },1300)
+    console.log("click", e.currentTarget.value);
+    const retorno = MovieFilter(e.currentTarget.value)
+    setnameTitle(e.currentTarget.value)
+    dispatch(retorno)
+  }
+  
   const handleSearch = (e: React.KeyboardEvent<HTMLInputElement> | React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
     const fetchData = async () => {
@@ -39,20 +48,18 @@ export const Search = () => {
       e.preventDefault();
       setLoad(true)
       handleSearch(e);
+      setnameTitle("Peliculas")
     }
   }
   
   
-  useEffect(() => {
-    const fetchData = async () => {
-      const moviesAction = await getMovieName(countrie.trim())
-      dispatch(moviesAction);
-    };
-    fetchData();
-  }, [dispatch]);
-
   useEffect(()=> { 
     setTimeout(()=> { 
+      const fetchData = async () => {
+        const moviesAction = await getMovieName(countrie.trim())
+        dispatch(moviesAction);
+      };
+      fetchData();
       setLoad(false)
     },3000)
   },[])
@@ -63,20 +70,20 @@ export const Search = () => {
         <div className={styles.containerLeft}>
             <div className={styles.containerInput}><input name="Enter" onKeyPress={(e) => handleEnter(e)} className={styles.SearchBar} value={countrie} onChange={countrieName} type='text' placeholder='Search Movie' /></div>
             <div className={styles.containerBtn}>
-            <button>Comedia</button>
-            <button>Terror</button>
-            <button>TV Programas</button>
-            <button>Music</button>
+            <button value={"Comedy"} onClick={FilterMovie}>Comedia</button>
+            <button value={"TV"} onClick={FilterMovie}>TV Programas</button>
+            <button value={"Music"} onClick={FilterMovie}>Music</button>
+            <button value={"Terror"} onClick={FilterMovie}>Terror</button>
             </div>
         </div>
         <div className={styles.containerRight}>
-            <h1>Peliculas</h1>
+            <h1>{nameTitle}</h1>
             
               <div className={styles.movieContainer}>
            
-             {load ? <div className={styles.center}><div className={styles.spinner}></div></div> : movie.length > 0 && movie.map((movie: MovieObject, index) => { 
+             {load ? <div className={styles.center}><div className={styles.spinner}></div></div> : movie.length > 0 ? movie.map((movie: MovieObject, index) => { 
   return <img key={index} src={movie.image} width={"200px"} height={"350px"} alt={movie.id} /> 
-}).slice(0,17) } 
+}).slice(0,12) : <h3 style={{color: "red"}}>No se encontro resultados</h3>  } 
             
             </div> 
             
@@ -84,12 +91,3 @@ export const Search = () => {
     </div> 
   )
 }
-
-
-
-// {movie.length > 0 ?  movie.map((movie: MovieObject, index) => { 
-//   return <img key={index} src={movie.image} width={"200px"} height={"350px"} alt={movie.id} /> 
-// }).slice(0,17)} 
-
-
-// <h3 style={{color: "red"}}>No se encontro resultados</h3>

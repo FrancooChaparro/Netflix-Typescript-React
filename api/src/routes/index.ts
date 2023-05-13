@@ -138,7 +138,7 @@ router.get("/movie", async (req: Request, res: Response) => {
             }})
 
           if (moviesQuery.length == 0) {
-            res.status(500).json({
+            res.status(201).json({
               status: false,
               msg: `No se encontro ninguna pelicula llamada ${name}`,
               errorCode: 12
@@ -151,7 +151,7 @@ router.get("/movie", async (req: Request, res: Response) => {
             });
           }
         } else {
-          res.status(500).json({
+          res.status(404).json({
             status: false,
             msg: `Formato de busqueda invalido`,
             errorCode: 14

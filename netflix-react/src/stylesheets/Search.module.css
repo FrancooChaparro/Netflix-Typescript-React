@@ -47,6 +47,7 @@
     align-items: center;
     justify-content: flex-start;
     padding-left: 7px;
+    cursor: pointer;
 }
 
 .containerBtn button:hover { 
