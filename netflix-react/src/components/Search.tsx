@@ -3,7 +3,7 @@ import styles from "../stylesheets/Search.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Movies, movieName } from '../redux/reducer';
 import { MovieObject } from "../types";
-import { getMovieName, MovieFilter, GetMovies } from '../redux/actions';
+import { getMovieName, MovieFilter } from '../redux/actions';
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
 import { Link } from "react-router-dom";

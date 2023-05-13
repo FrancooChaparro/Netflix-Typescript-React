@@ -11,6 +11,7 @@ export interface AppState {
     user: User | null;
     movies: Array<MovieObject>;
     allMovies: Array<MovieObject> | [];
+    MyList: Array<MovieObject> | [];
   }
 
 export interface MovieObject { 

@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { Action } from "redux";
-import { LoginForm, RegisterForm, User } from "../types";
+import { LoginForm, MovieObject, RegisterForm, User } from "../types";
+import { type } from "os";
 
 export const REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS";
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
@@ -8,7 +9,7 @@ export const GET_MOVIES = "GET_MOVIES";
 export const USER_ACTIVE = "USER_ACTIVE";
 export const MOVIE_BY_NAME = "MOVIE_BY_NAME";
 export const MOVIE_FILTER = "MOVIE_FILTER";
-
+export const ADD_MOVIE_LIST = "ADD_MOVIE_LIST";
 
 export interface RegisterUserSuccessAction extends Action {
   type: typeof REGISTER_USER_SUCCESS;
@@ -35,10 +36,22 @@ export interface MovieFilter extends Action {
   payload: string
 }
 
+// export interface AddMyList extends Action { 
+//   type: typeof ADD_MOVIE_LIST;
+//   payload: MovieObject
+// }
+
 export const MovieFilter = (paramsCategory: string) => { 
   return  {
     type: MOVIE_FILTER,
     payload: paramsCategory
+  }
+}
+
+export const addMyList = (paramsMovie: MovieObject) => { 
+  return { 
+    type: ADD_MOVIE_LIST,
+    payload: paramsMovie
   }
 }
 

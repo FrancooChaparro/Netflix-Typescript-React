@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import styles from "../stylesheets/Card.module.css";
 import { BsFillPlayFill } from "react-icons/bs";
 import { BsChevronDown } from "react-icons/bs";
-import { MovieObject } from "../types"
-
+import { MovieObject } from "../types";
+import { addMyList } from "../redux/actions";
+import { useDispatch, useSelector } from 'react-redux';
+import { myList } from "../redux/reducer";
 
 interface MyPropsCard {
   cardProps: MovieObject,
@@ -12,8 +14,10 @@ interface MyPropsCard {
  
  export const Card:  React.FC<MyPropsCard> = ({ cardProps, isNew }) => {
   const [loading, setLoading] = useState<boolean>(true);
+  const dispatch = useDispatch()
+  let MyListMovies: Array<MovieObject> | [] = useSelector(myList);
+  console.log(MyListMovies, "soy yo");
   
-
 
   const handleImageLoad = () => {
     setLoading(false);
@@ -23,6 +27,11 @@ interface MyPropsCard {
     setLoading(true);
   };
   
+
+  const addMyListToStore = (props: MovieObject ) => { 
+    const action = addMyList(props);
+    dispatch(action); 
+  }
 
   return (
     
@@ -35,7 +44,7 @@ interface MyPropsCard {
             <div className={styles.details}><img src={cardProps?.background}  alt={cardProps?.title} style={{ filter: "brightness(110%)"}}/></div>
             <div className={styles.details2}>
               <div className={styles.icons}>
-                <div className={styles.play}><BsFillPlayFill /></div>
+                <div className={styles.play}><BsFillPlayFill onClick={()=> addMyListToStore(cardProps)} /></div>
                 <div className={styles.more}><BsChevronDown /></div>
               </div>
               <div className={styles.date}>{isNew && <span style={{color: "greenyellow"}}>New</span>}<span>{cardProps?.date}</span></div>

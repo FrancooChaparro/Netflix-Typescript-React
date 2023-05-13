@@ -4,16 +4,18 @@ import {
   LOGIN_USER_SUCCESS,
   GET_MOVIES,
   MOVIE_BY_NAME,
-  MOVIE_FILTER
+  MOVIE_FILTER,
+  ADD_MOVIE_LIST
 } from "./actions";
-import { MovieObject, User, AppState } from "../types";
+import { AppState } from "../types";
 
 
 // Estado Global
 const initialState: AppState = {
   user: null,
   movies: [],
-  allMovies: []
+  allMovies: [],
+  MyList: []
 };
 
 
@@ -21,6 +23,7 @@ const initialState: AppState = {
 export const UserActive = (state: AppState) => state.user;
 export const Movies = (state: AppState) => state.movies;
 export const movieName = (state: AppState) => state.allMovies
+export const myList = (state: AppState) => state.MyList;
 
 
 // Reducer
@@ -49,6 +52,11 @@ const rootReducer = (state = initialState, action: AnyAction): AppState => {
       return { 
         ...state, 
         allMovies: state.movies.filter(e => e.gender == action.payload)
+      }
+      case ADD_MOVIE_LIST: 
+      return { 
+        ...state, 
+        MyList: [...state.MyList, action.payload]
       }
     default:
       return state;
