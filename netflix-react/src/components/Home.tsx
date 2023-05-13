@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import { Navbar } from "./Navbar";
 import styles from "../stylesheets/Home.module.css";
 import { Landing } from './Landing';
-import { GetMovies } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { Movies } from '../redux/reducer';
 import { MovieObject } from "../types";
@@ -27,15 +26,6 @@ useEffect(()=> {
   },1300)
 },[])
 
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const moviesAction = await GetMovies();
-  //     dispatch(moviesAction);
-  //   };
-  //   fetchData();
-  // }, [dispatch]);
-  
 
   useEffect(() => {
     const interval = setInterval(() => {   

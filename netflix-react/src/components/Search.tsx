@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { Movies, movieName } from '../redux/reducer';
 import { MovieObject } from "../types";
 import { getMovieName, MovieFilter, GetMovies } from '../redux/actions';
+import { MdOutlineWorkspacePremium } from "react-icons/md";
+import { AiOutlineHome } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 
 export const Search = () => {
@@ -64,9 +67,16 @@ export const Search = () => {
     },3000)
   },[])
   
+
+
   return (
     <div className={styles.containerAll}>
-        <div className={styles.containerNavbar}></div>
+        <div className={styles.containerNavbar}>
+          <div className={styles.containerIcons}>
+         <Link to={"/Home"}><MdOutlineWorkspacePremium className={styles.icon}/></Link>
+         <Link to={"/Home"}><AiOutlineHome className={styles.icon}/></Link>
+          </div>
+          </div>
         <div className={styles.containerLeft}>
             <div className={styles.containerInput}><input name="Enter" onKeyPress={(e) => handleEnter(e)} className={styles.SearchBar} value={countrie} onChange={countrieName} type='text' placeholder='Search Movie' /></div>
             <div className={styles.containerBtn}>
@@ -85,8 +95,7 @@ export const Search = () => {
   return <img key={index} src={movie.image} width={"200px"} height={"350px"} alt={movie.id} /> 
 }).slice(0,12) : <h3 style={{color: "red"}}>No se encontro resultados</h3>  } 
             
-            </div> 
-            
+            </div>   
         </div>  
     </div> 
   )

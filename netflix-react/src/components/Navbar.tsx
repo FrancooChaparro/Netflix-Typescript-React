@@ -57,7 +57,7 @@ export const Navbar = () => {
 
       <div className={styles.arriba}>
 
-        <div className={styles.userDiv}><BiSearch style={{cursor: "pointer", }}/></div>
+        <div className={styles.userDiv}><Link to={"/Search"}><BiSearch style={{cursor: "pointer"}}/></Link></div>
         <div className={styles.userDiv}><IoNotificationsOutline style={{cursor: "pointer"}}/></div>
         <div className={styles.userDiv1}>
             <img src={Avatar} alt=""  />
