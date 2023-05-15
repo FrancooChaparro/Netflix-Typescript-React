@@ -55,11 +55,11 @@ useEffect(()=> {
           <p className={styles.description}>{cartelera?.overview}</p>
         </div> 
       </div>
-       <Landing isNew={true} title={"Trending Now"} movie={trending}/><br />
+       <Landing isNew={true} title={"Trending Now"} movie={trending}/>
        {MyListMovies.length > 0 && <MyList isNew={false} title={"My List"} movie={MyListMovies}/>}  
-       <Landing isNew={false} title={"Music"} movie={Music}/> <br />
-       <Landing isNew={false}title={"Comedy"} movie={comedy}/> <br />
-       <Landing isNew={false}title={"Terror"} movie={terror}/> <br />
+       <Landing isNew={false} title={"Music"} movie={Music}/>
+       <Landing isNew={false}title={"Comedy"} movie={comedy}/> 
+       <Landing isNew={false}title={"Terror"} movie={terror}/> 
        <Landing isNew={false}title={"Programas TV"} movie={tv}/>
     </div> }
     <Footer />

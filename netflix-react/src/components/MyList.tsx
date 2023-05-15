@@ -1,28 +1,48 @@
-import React from 'react';
-import styles from "../stylesheets/Landing.module.css";
+import React, { useState } from 'react';
+import styles from "../stylesheets/MyList.module.css";
 import { Card } from './Card';
 import { MovieObject } from "../types"
 
 interface MyProps {
- movie: Array<MovieObject>,
- title: string,
- isNew: boolean
+  movie: Array<MovieObject>,
+  title: string,
+  isNew: boolean
 }
 
-export const MyList:  React.FC<MyProps> = ({ movie, title, isNew }) => {
+export const MyList: React.FC<MyProps> = ({ movie, title, isNew }) => {
+  const [startIndex, setStartIndex] = useState(0);
+  const moviesToShow = 4; // Cantidad de películas a mostrar a la vez
+  const izq = "<"
+  const der = ">"
+
+
+  const handlePrev = () => {
+    if (startIndex > 0) {
+      setStartIndex(startIndex - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (startIndex + moviesToShow < movie.length) {
+      setStartIndex(startIndex + 1);
+    }
+  };
 
   return (
     <div className={styles.containerAll}>
-        <div className={styles.containerTitle}>
-            <h1>{title}</h1>
-        </div>
-        <div className={styles.containerCards}>
-           {
-            movie.length > 0 && movie.map((mov, index) => { 
-              return <Card key={index} cardProps={mov} isNew={isNew}/>
-            })
-           }
-        </div>
+      <div className={styles.containerTitle}>
+        <h1>{title}</h1>
+      </div>
+      <div className={`${styles.containerCards} ${styles.transitionContainer}`}>
+       <div className={styles.btnDivI}><button onClick={handlePrev}>{izq}</button></div>
+        {
+          movie.length > 0 && movie.slice(startIndex, startIndex + moviesToShow).map((mov, index) => {
+            return <Card key={index} cardProps={mov} isNew={isNew} />;
+          })
+        }
+       <div className={styles.btnDiv}><button onClick={handleNext}>{der}</button></div>
+      </div>
     </div>
-  )
-}
+  );
+};
+

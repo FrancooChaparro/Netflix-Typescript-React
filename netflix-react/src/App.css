@@ -3,3 +3,7 @@ a {
     text-decoration: none;
     cursor: "pointer"
   }
+
+  body { 
+    background-color: #1b1b1b;
+  }

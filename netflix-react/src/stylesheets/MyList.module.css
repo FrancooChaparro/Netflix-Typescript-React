@@ -1,0 +1,51 @@
+.containerAll { 
+    width: 100%;
+    background-color: #1b1b1b;   
+    margin-bottom: 25px;
+}
+
+.containerTitle { 
+    z-index: 0;
+    font-size: 11px;
+    color: white;
+    width: 97%;
+    margin: 0 auto;
+}
+
+.containerCards { 
+    width: 97%;
+    margin: 0 auto;
+    height: 130px;
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.containerCards button { 
+    height: 23px;
+    background-color: #1b1b1b;   
+    color: rgb(116, 113, 113);
+    border: none;
+    font-size: 25px; 
+    width: 23px;
+    align-items: center;
+}
+.btnDiv { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -14px;
+}
+.btnDivI {
+    margin-right: 6px;
+    margin-left: -14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b1b1b;   
+}
+
+.transition-container {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  
