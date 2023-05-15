@@ -34,11 +34,22 @@ const rootReducer = (state = initialState, action: AnyAction): AppState => {
       return {
         ...state,
       };
-    case LOGIN_USER_SUCCESS:  
-      return {
-        ...state,
-        user: action.payload,
-      };
+      case LOGIN_USER_SUCCESS:
+        const userActive = action.payload;
+        let UserSlag: any = null;
+        
+        if (userActive !== null) {
+          localStorage.setItem("USUARIO", JSON.stringify(userActive));
+          const storedUser = localStorage.getItem("USUARIO");
+          if (typeof storedUser === "string") {
+            UserSlag = JSON.parse(storedUser);
+          }
+        }
+        return {
+          ...state,
+          user: UserSlag
+        };
+      
     case GET_MOVIES:
       return {
         ...state,

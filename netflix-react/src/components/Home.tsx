@@ -12,6 +12,8 @@ import { MyList } from "./MyList";
 export const Home = () => {
   const AllMovies: Array<MovieObject> | [] = useSelector(Movies);
   const User = useSelector(UserActive);
+  console.log(User);
+  
   const dispatch = useDispatch();
   const [num, setNum] = useState<number>(0);
   const terror: Array<MovieObject> | [] = AllMovies.filter(

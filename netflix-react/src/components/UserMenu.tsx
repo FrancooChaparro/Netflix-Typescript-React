@@ -3,6 +3,7 @@ import styles from "../stylesheets/UserMenu.module.css";
 import Avatar from "../images/Netflix-avatar.png";
 import { useSelector } from 'react-redux';
 import { UserActive } from '../redux/reducer';
+import { useNavigate } from 'react-router-dom';
 
 
 interface typeProps { 
@@ -12,6 +13,15 @@ interface typeProps {
 
 export const UserMenu: React.FC<typeProps> = ({ type }) => {
   const userActive = useSelector(UserActive)
+  const navigate = useNavigate()
+
+  function CerrarSes(e: React.MouseEvent<HTMLSpanElement, MouseEvent>) {
+    e.preventDefault();
+    setTimeout(() => {
+      window.localStorage.removeItem("USUARIO")
+      navigate("/Login")
+    }, 1300)
+  }
 
   return (
     <div className={type ? styles.containerMenu : styles.containerMenuOpactity }>
@@ -24,7 +34,7 @@ export const UserMenu: React.FC<typeProps> = ({ type }) => {
             </div>
         </div>
         
-        <div className={styles.containerLogout}><span>Sign out of Netflix</span></div>
+        <div className={styles.containerLogout}><span onClick={CerrarSes}>Sign out of Netflix</span></div>
     </div>
   )
 }
