@@ -32,7 +32,6 @@ export const Home = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   let MyListMovies: Array<MovieObject> | [] = useSelector(myList);
-  console.log(MyListMovies, "Mylist");
 
   useEffect(() => {
     setTimeout(() => {
@@ -55,6 +54,7 @@ export const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
+  
   const cartelera: MovieObject = terror[num];
 
   return (

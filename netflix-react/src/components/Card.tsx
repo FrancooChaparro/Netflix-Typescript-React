@@ -30,15 +30,18 @@ export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew, AddorOut }) => {
   const addMyListToStore = (props: MovieObject, text: string ) => {
     if (text === "Quitar de mi lista") { 
       const OutList = OutMyList(props);
+      setShowMenu(!showMenu)
      return dispatch(OutList);
     }
     
     const existentMovie = MyListMovies.find((e) => e.title === props.title);
 
     if (existentMovie) {
+      setShowMenu(!showMenu)
       alert("Ya está en tu lista");
     } else {
       const action = addMyList(props);
+      setShowMenu(!showMenu)
       dispatch(action);
     }
   };

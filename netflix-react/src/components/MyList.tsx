@@ -40,9 +40,8 @@ export const MyList: React.FC<MyProps> = ({ movie, title, isNew }) => {
             return <Card key={index} cardProps={mov} isNew={isNew} AddorOut={"Quitar de mi lista"} />;
           })
         }
-       <div className={styles.btnDiv}><button onClick={handleNext}>{der}</button></div>
+      {movie.length > 3 && <div className={styles.btnDiv}><button onClick={handleNext}>{der}</button></div>} 
       </div>
     </div>
   );
 };
-
