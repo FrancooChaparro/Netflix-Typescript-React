@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { Movies } from '../redux/reducer';
 import { MovieObject } from "../types";
 import { Footer } from './Footer';
+import { myList } from "../redux/reducer";
+import { MyList } from './MyList';
 
 
 export const Home = () => {
@@ -19,6 +21,9 @@ export const Home = () => {
   const tv: Array<MovieObject> | [] = AllMovies.filter((movie: MovieObject) => movie.gender === "TV") 
   const [loading, setLoading] = useState<boolean>(true);
 
+
+  let MyListMovies: Array<MovieObject> | [] = useSelector(myList);
+  console.log(MyListMovies, "soy yo");
 
 useEffect(()=> { 
   setTimeout(()=> { 
@@ -51,6 +56,7 @@ useEffect(()=> {
         </div> 
       </div>
        <Landing isNew={true} title={"Trending Now"} movie={trending}/><br />
+       {MyListMovies.length > 0 && <MyList isNew={false} title={"My List"} movie={MyListMovies}/>}  
        <Landing isNew={false} title={"Music"} movie={Music}/> <br />
        <Landing isNew={false}title={"Comedy"} movie={comedy}/> <br />
        <Landing isNew={false}title={"Terror"} movie={terror}/> <br />
