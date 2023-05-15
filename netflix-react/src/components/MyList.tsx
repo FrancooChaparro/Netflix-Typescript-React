@@ -37,7 +37,7 @@ export const MyList: React.FC<MyProps> = ({ movie, title, isNew }) => {
        <div className={styles.btnDivI}><button onClick={handlePrev}>{izq}</button></div>
         {
           movie.length > 0 && movie.slice(startIndex, startIndex + moviesToShow).map((mov, index) => {
-            return <Card key={index} cardProps={mov} isNew={isNew} />;
+            return <Card key={index} cardProps={mov} isNew={isNew} AddorOut={"Quitar de mi lista"} />;
           })
         }
        <div className={styles.btnDiv}><button onClick={handleNext}>{der}</button></div>

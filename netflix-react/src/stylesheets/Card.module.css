@@ -148,7 +148,52 @@
 }
 
 
+.addMenu { 
+  position: absolute;
+  right: 0;
+  top: 65%;
+  width: 180px;
+  overflow: hidden;   /* Oculta el contenido desbordado */
+  text-overflow: ellipsis;
+  white-space: nowrap; 
+  height: 60px;
+  background-color:#383737;
+  font-size: 15px;
+  color: white;
+  box-shadow: 20px 20px 50px rgb(0, 0, 0);
+  z-index: 10;
+  border: 1px solid rgb(20, 20, 20);
+}
 
+.addMenu1 {
+  height: 50%;
+  border-bottom: 0.5px solid black;
+  padding-left: 11px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.addMenu2 {
+  height: 50%;
+  padding-left: 11px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.addMenu1:hover,
+.addMenu2:hover {
+ background-color: #252424;
+}
+.show {
+  cursor: pointer; 
+}
+
+.showOpen { 
+  cursor: pointer; 
+  transform: rotate(180deg)
+}
 
 .spinner {
   width: 20px;

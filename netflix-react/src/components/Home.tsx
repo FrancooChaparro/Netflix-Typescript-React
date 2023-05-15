@@ -12,7 +12,6 @@ import { MyList } from "./MyList";
 export const Home = () => {
   const AllMovies: Array<MovieObject> | [] = useSelector(Movies);
   const User = useSelector(UserActive);
-  console.log(User, "El user");
   const dispatch = useDispatch();
   const [num, setNum] = useState<number>(0);
   const terror: Array<MovieObject> | [] = AllMovies.filter(
@@ -33,7 +32,7 @@ export const Home = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   let MyListMovies: Array<MovieObject> | [] = useSelector(myList);
-
+  console.log(MyListMovies, "Mylist");
 
   useEffect(() => {
     setTimeout(() => {

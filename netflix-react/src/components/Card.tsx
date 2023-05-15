@@ -3,20 +3,22 @@ import styles from "../stylesheets/Card.module.css";
 import { BsFillPlayFill } from "react-icons/bs";
 import { BsChevronDown } from "react-icons/bs";
 import { MovieObject } from "../types";
-import { addMyList } from "../redux/actions";
+import { addMyList, OutMyList } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { myList } from "../redux/reducer";
 
 interface MyPropsCard {
   cardProps: MovieObject;
   isNew: boolean;
+  AddorOut: string;
 }
 
-export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew }) => {
+export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew, AddorOut }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useDispatch();
+  const [showMenu, setShowMenu] = useState<boolean>(false)
   let MyListMovies: Array<MovieObject> | [] = useSelector(myList);
-
+  
   const handleImageLoad = () => {
     setLoading(false);
   };
@@ -25,9 +27,14 @@ export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew }) => {
     setLoading(true);
   };
 
-  const addMyListToStore = (props: MovieObject) => {
+  const addMyListToStore = (props: MovieObject, text: string ) => {
+    if (text === "Quitar de mi lista") { 
+      const OutList = OutMyList(props);
+     return dispatch(OutList);
+    }
+    
     const existentMovie = MyListMovies.find((e) => e.title === props.title);
-  
+
     if (existentMovie) {
       alert("Ya está en tu lista");
     } else {
@@ -35,7 +42,6 @@ export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew }) => {
       dispatch(action);
     }
   };
-  
 
   return (
     <div className={styles.containerCard}>
@@ -62,10 +68,10 @@ export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew }) => {
           <div className={styles.details2}>
             <div className={styles.icons}>
               <div className={styles.play}>
-                <BsFillPlayFill onClick={() => addMyListToStore(cardProps)} />
+                <BsFillPlayFill />
               </div>
-              <div className={styles.more}>
-                <BsChevronDown />
+              <div onClick={()=> setShowMenu(!showMenu)} className={styles.more}>
+                <BsChevronDown className={showMenu ? styles.showOpen : styles.show}/>
               </div>
             </div>
             <div className={styles.date}>
@@ -79,6 +85,10 @@ export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew }) => {
               <span>{cardProps?.gender}</span>
             </div>
           </div>
+          {showMenu && <div className={styles.addMenu}>
+            <div className={styles.addMenu1} onClick={() => addMyListToStore(cardProps, AddorOut)}>{AddorOut}</div>
+            <div className={styles.addMenu2}>Ver Detalles</div>
+          </div> }
         </div>
       )}
     </div>

@@ -5,7 +5,8 @@ import {
   GET_MOVIES,
   MOVIE_BY_NAME,
   MOVIE_FILTER,
-  ADD_MOVIE_LIST
+  ADD_MOVIE_LIST,
+  OUT_MOVIE_LIST
 } from "./actions";
 import { AppState } from "../types";
 
@@ -57,6 +58,12 @@ const rootReducer = (state = initialState, action: AnyAction): AppState => {
       return { 
         ...state, 
         MyList: [...state.MyList, action.payload]
+      }
+      case OUT_MOVIE_LIST: 
+      const updatedList = state.MyList.filter((movie) => movie.title !== action.payload.title);
+      return { 
+        ...state, 
+        MyList: updatedList
       }
     default:
       return state;
