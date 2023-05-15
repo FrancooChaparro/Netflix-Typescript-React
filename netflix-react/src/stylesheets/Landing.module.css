@@ -18,3 +18,37 @@
     height: 130px;
     display: flex;
 }
+
+
+
+
+.containerCards button { 
+    height: 23px;
+    background-color: #1b1b1b;   
+    color: rgb(116, 113, 113);
+    border: none;
+    font-size: 25px; 
+    width: 23px;
+    align-items: center;
+    cursor: pointer;
+}
+.btnDiv { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -14px;
+}
+.btnDivI {
+    margin-right: 6px;
+    margin-left: -14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1b1b1b;   
+}
+
+.transition-container {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+  

@@ -28,6 +28,8 @@
     font-size: 25px; 
     width: 23px;
     align-items: center;
+    cursor: pointer;
+
 }
 .btnDiv { 
     display: flex;
