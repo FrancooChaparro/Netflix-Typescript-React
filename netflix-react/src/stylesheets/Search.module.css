@@ -1,20 +1,21 @@
 .containerAll {
     width: 100%;
     display: flex;
-    background-color: black;
+    background-color: #1b1b1b;
 }
 .containerNavbar { 
-    background-color: black;
+    background-color:  #1b1b1b;;
     width: 5%;
-    height: 600px;
-    display: flex;
-    justify-content: center;
+    height:191vh;
+    box-shadow: 0px -5px 11px rgb(5, 5, 5);
+    z-index: 999;
 }
 
 .containerLeft { 
     width: 25%;
-    height: 600px;
-
+    z-index: 100;
+    height:191vh;
+    box-shadow: 23px 0px 10px -20px rgb(0, 0, 0);
 }
 
 .containerInput {
@@ -25,8 +26,8 @@
 }
 
 .containerInput input { 
-    width: 95%;
-    background-color: black;
+    width: 92%;
+    background-color:  #1b1b1b;
     height: 38px;
     border: 1px solid grey;
     color: rgb(206, 204, 204);
@@ -40,12 +41,13 @@
 }
 
 .containerBtn button { 
+    width: 88%;
     color: rgb(158, 152, 152);
-    background-color: black;
+    background-color:  #1b1b1b;
     height: 34px;
     font-size: 20px;
     border-radius: 2px;
-    border: 2.5px solid black;
+    border: 2.5px solid #1b1b1b;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -55,16 +57,19 @@
 
 .containerBtn button:hover { 
     border: 2.5px solid white;
+    width: 98%;
 }
 
 .containerBtn button:active { 
     border: 2.5px solid white;
+    width: 99%;
+
 }
 .containerRight { 
-    background-color: rgb(0, 0, 0);
+    background-color: #1b1b1b;
     color: white;
     width: 70%;
-    box-shadow: 0px 30px 30px rgb(22, 22, 22);
+    box-shadow: 0px 30px 30px rgb(0, 0, 0);
 }
 
 .containerRight h1 { 
@@ -80,11 +85,12 @@
     margin: 0 auto;
     padding-left: 30px;
     min-height: 100vh;
-    box-shadow: 0px 50px 50px rgb(36, 36, 36);
+    background-color: #1b1b1b;
+    box-shadow: 0px 50px 50px  #1b1b1b;
 }
 
 .center { 
-    background-color: #000000;
+    background-color: #1b1b1b;
     width: 100%;
     height: 88vh;
     display: flex;
@@ -97,7 +103,7 @@
     height: 80px;
     position: absolute;
     border-radius: 50%;
-    border: 4px solid #000000;
+    border: 4px solid #1b1b1b;
     border-top-color: #bd0c0c;
     animation: spin 0.8s linear infinite;
   }
@@ -110,7 +116,7 @@
   
 
   .containerIcons { 
-    background-color: #000000;
+    background-color: #1b1b1b;
     width: 80%;
     display: flex;
     justify-content: center;
@@ -118,12 +124,14 @@
     flex-direction: column;
     color: white;
     font-size: 25px;
-    box-shadow: 0px -5px 11px rgb(36, 36, 36);
+    margin-top: 300px;
+    padding-left:5px ;
+    /* box-shadow: 0px -5px 11px rgb(5, 5, 5); */
   }
 
   .icon {
      margin-top: 7px;
-    border-bottom: 4px solid rgb(0, 0, 0);
+    border-bottom: 4px solid #1b1b1b;
     padding-bottom: 5px;
 }
 

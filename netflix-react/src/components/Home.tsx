@@ -98,7 +98,7 @@ export const Home = () => {
               <p className={styles.title}>{poster?.title}</p>
               <p className={styles.description}>{poster?.overview}</p>
               <div className={styles.containerBtn}>
-              <button onClick={()=> addMyListToStore(poster)} className={styles.btnAdd}><IoMdAdd className={styles.icon} /> AddList</button>
+              <button onClick={()=> addMyListToStore(poster)} className={styles.btnAdd}><IoMdAdd className={styles.icon} />Add List</button>
               <button onClick={()=> linktag()} className={styles.btnInfo}><AiOutlineInfoCircle className={styles.icon}/>More Info</button>
               </div>
             </div>
