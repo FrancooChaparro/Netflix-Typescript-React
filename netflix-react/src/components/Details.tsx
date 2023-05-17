@@ -9,7 +9,7 @@ export const Details = () => {
   const [movieID, setmovieID] = useState<MovieObject>();
   const { id } = useParams(); // Consigo el id
   const User = useSelector(UserActive);
-  console.log(User);
+
   // Con un useEffect obtengo la info y la guardo en el state y aparte dejo vacio el state
   useEffect(() => {
     fetch(`http://localhost:3001/movie/${id}`)
@@ -43,11 +43,10 @@ export const Details = () => {
             <div>
               <h1>{movieID?.title}</h1>
               <h3>
-                {movieID?.date} · {movieID?.gender} · (
-                {movieID?.language.toUpperCase()})
+                {movieID?.date} · {movieID?.gender} · ({movieID?.language.toUpperCase()})
               </h3>
               <h2>Overview</h2>
-              <p>{movieID?.overview}.</p>
+              <p style={{width: "85%"}}>{movieID?.overview}.</p>
             </div>
           </div>
         </div>

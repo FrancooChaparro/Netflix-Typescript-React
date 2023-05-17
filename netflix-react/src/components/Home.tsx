@@ -8,13 +8,16 @@ import { MovieObject } from "../types";
 import { Footer } from "./Footer";
 import { myList } from "../redux/reducer";
 import { MyList } from "./MyList";
+import { IoMdAdd } from "react-icons/io";
+import { AiOutlineInfoCircle } from "react-icons/ai";
+import { addMyList } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const AllMovies: Array<MovieObject> | [] = useSelector(Movies);
   const User = useSelector(UserActive);
-  console.log(User);
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [num, setNum] = useState<number>(0);
   const terror: Array<MovieObject> | [] = AllMovies.filter(
     (movie: MovieObject) => movie.gender === "Terror"
@@ -57,8 +60,25 @@ export const Home = () => {
   }, []);
 
   
-  const cartelera: MovieObject = terror[num];
+  const addMyListToStore = (props: MovieObject) => {
 
+    const existentMovie = MyListMovies.find((e) => e.title === props.title);
+
+    if (existentMovie) {
+      alert("Ya está en tu lista");
+    } else {
+      const action = addMyList(props);
+      dispatch(action);
+    }
+  };
+
+  function linktag () { 
+    navigate("/Details/" + poster.id)
+  }
+
+  const poster: MovieObject = terror[num];
+  console.log(poster);
+  
   return (
     <div>
       {loading ? (
@@ -70,13 +90,17 @@ export const Home = () => {
           <Navbar />
           <div className={styles.ContainerBackground}>
             <img
-              src={cartelera?.background}
+              src={poster?.background}
               alt="logo"
               className={styles.background}
             />
             <div className={styles.containerData}>
-              <p className={styles.title}>{cartelera?.title}</p>
-              <p className={styles.description}>{cartelera?.overview}</p>
+              <p className={styles.title}>{poster?.title}</p>
+              <p className={styles.description}>{poster?.overview}</p>
+              <div className={styles.containerBtn}>
+              <button onClick={()=> addMyListToStore(poster)} className={styles.btnAdd}><IoMdAdd className={styles.icon} /> AddList</button>
+              <button onClick={()=> linktag()} className={styles.btnInfo}><AiOutlineInfoCircle className={styles.icon}/>More Info</button>
+              </div>
             </div>
           </div>
           <Landing isNew={true} title={"Trending Now"} movie={trending} />

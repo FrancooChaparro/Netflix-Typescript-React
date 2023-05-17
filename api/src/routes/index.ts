@@ -2,23 +2,55 @@ import { Router, Request, Response } from "express";
 import { user } from "../../db";
 import { movies } from "../../db";
 import axios from "axios";
-import { Op } from "sequelize";
+import { Model, Op } from "sequelize";
 import { User } from "./types";
+import { compare, encrypt } from "../helpers/bcrypt";
 const router = Router();
 
 // Perfeccionar register
 // Login Bcript
-// RegexString ALLmovies
-
 
 router.post("/users", async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
-  
+  const regexName = /^([a-zA-Z ]+)$/i;
+  const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+  const infoUser = {
+    username,
+    password,
+  };
+
   try {
+    if (!username || !password || !email)
+      return res.json({ msg: "Missing required fields" });
+
+    if (email && email.length > 0 && email != "") {
+      if (regexEmail.test(email)) {
+        const userBD = await user.findOne({ where: { email: `${email}` } });
+        if (userBD) {
+          return res.json({ msg: "The email already exists" });
+        }
+      }
+
+      if (username && username.length > 0 && username != "") {
+        if (regexName.test(username)) {
+          infoUser.username = `${username}`;
+        } else {
+          return res.json({ msg: "The name is invalid" });
+        }
+      }
+
+      if (password && password.length > 0 && password != "") {
+        const passwordHash = await encrypt(password);
+        infoUser.password = `${passwordHash}`;
+      } else {
+        return res.json({ msg: "The password is invalid" });
+      }
+    }
+
     const usuario = await user.create({
-      username, 
+      username,
       email,
-      password 
+      password: infoUser.password,
     });
 
     return res.json({ msg: `User create succesfully`, user: usuario });
@@ -27,52 +59,58 @@ router.post("/users", async (req: Request, res: Response) => {
   }
 });
 
-
 router.get("/allMovies", async (req: Request, res: Response) => {
   try {
     const moviess = await movies.findAll();
-    console.log(moviess);
-    
-    return res.json({ msg: "statusTrue ", movies: moviess });
 
+    return res.json({ msg: "statusTrue ", movies: moviess });
+  
   } catch (error) {
-    
     return res.json({ msg: `Error 404 -${error}` });
   }
 });
 
+interface UserLog {
+  id: number;
+  username: string;
+  email: string;
+  password: string;
+}
+
 // Login Post
-router.post("/Login", async (req: Request, res: Response) => { 
+router.post("/Login", async (req: Request, res: Response) => {
+  const { email, password } = req.body;
+
   try {
-    const { email, password } = req.body;
-    const usuario = await user.findOne({ where: { email: `${email}` } });
-    
-    if (!usuario) return res.json({ msg: 'User not found',success: false });
+    const usuario: UserLog | Model<any, any> | null = (await user.findOne({
+      where: { email: `${email}` },
+    })) as UserLog | null;
 
-    //  const checkPassword = await compare(password, usuario.password);
-    if (usuario.dataValues.password !== password) return res.json({ msg: 'Password Invalid',success: false });
+    if (!usuario) return res.json({ msg: "User not found", success: false });
 
-    if (usuario) {
-      const finallyData: User =  {
-        username : usuario.dataValues.username, 
-        email: usuario.dataValues.email
-      }
-      res.status(200).send({
-        data: finallyData,
-        success: true,
-      });
+    const checkPassword = await compare(password, usuario.password);
+
+    if (checkPassword) {
+        const finallyData = {
+          username: usuario.username,
+          email: usuario.email,
+        };
+        res.status(200).send({
+          data: finallyData,
+          success: true,
+        });
+      
     }
-    
-    // if (!checkPassword) {
-    //   return res.json({ msg: 'Invalid password', success: false, });
-    // }
+    if (!checkPassword) {
+      return res.json({ msg: "Invalid password", success: false });
+    }
+
   } catch (error) {
     return res.json({ msg: `Error 404 - ${error}` });
   }
 });
 
 export default router;
-
 
 // Cargo 20 movie por click, por params puedo modificar la categoria del movie
 router.get("/movies", async (req: Request, res: Response) => {
@@ -99,7 +137,7 @@ router.get("/movies", async (req: Request, res: Response) => {
         image: `${URL_IMAGE + movie.poster_path}`,
         date: movie.release_date ? movie.release_date : "2020",
         background: `${URL_IMAGE + movie.backdrop_path}`,
-        gender: "Trending"
+        gender: "Trending",
       });
     });
 
@@ -112,93 +150,87 @@ router.get("/movies", async (req: Request, res: Response) => {
   }
 });
 
-
-
 // Ruta busco movie por query si hay, sino traigo todas las movie
 router.get("/movie", async (req: Request, res: Response) => {
   const { name } = req.query;
-  let moviesQuery
+  let moviesQuery;
   const regex_FullText = /^([a-zA-Z ]+)/i;
-
 
   try {
     if (name) {
       if (name === "") {
-        moviesQuery= await movies.findAll()
+        moviesQuery = await movies.findAll();
         res.status(200).json({
           status: true,
-          result: moviesQuery
+          result: moviesQuery,
         });
       } else {
         if (typeof name == "string") {
-
-          moviesQuery= await movies.findAll({
+          moviesQuery = await movies.findAll({
             where: {
-                title: { [Op.iLike]: `%${name}%` },
-            }})
+              title: { [Op.iLike]: `%${name}%` },
+            },
+          });
 
           if (moviesQuery.length == 0) {
             res.status(201).json({
               status: false,
               msg: `No se encontro ninguna pelicula llamada ${name}`,
-              errorCode: 12
-            })
-
+              errorCode: 12,
+            });
           } else {
             res.status(200).json({
               status: true,
-              result: moviesQuery
+              result: moviesQuery,
             });
           }
         } else {
           res.status(404).json({
             status: false,
             msg: `Formato de busqueda invalido`,
-            errorCode: 14
+            errorCode: 14,
           });
         }
       }
     } else {
-      moviesQuery = await movies.findAll()
+      moviesQuery = await movies.findAll();
       res.status(200).json({
         status: true,
-        result: moviesQuery
+        result: moviesQuery,
       });
     }
-
-
   } catch (error) {
     res.status(400).json({
       status: false,
       msg: `Entro al catch, ${error}`,
-      errorCode: 400
+      errorCode: 400,
     });
   }
-})
+});
 
-
-router.get("/movie/:id", async (req:Request, res: Response) => {
+router.get("/movie/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
 
-try {
-  const movieID = await movies.findByPk(id);
+  try {
+    const movieID = await movies.findByPk(id);
 
-  if (movieID === null) {
-    res.status(500).json({
+    if (movieID === null) {
+      res.status(500).json({
+        status: false,
+        msg: `Parametro de busqueda invalido`,
+        errorCode: 10,
+      });
+    } else {
+      res.status(200).json({
+        status: true,
+        result: movieID,
+      });
+    }
+  } catch (error) {
+    res.status(400).json({
       status: false,
-      msg: `Parametro de busqueda invalido`,
-      errorCode: 10
-    });
-  } else {
-    res.status(200).json({
-      status: true,
-      result: movieID
+      msg: `Entro al catch, ${error}`,
+      errorCode: 400,
     });
   }
-} catch (error) {
-  res.status(400).json({
-    status: false,
-    msg: `Entro al catch, ${error}`,
-    errorCode: 400
-  });
-}})
+});
