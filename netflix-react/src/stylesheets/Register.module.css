@@ -48,7 +48,6 @@
 
 
 .formInputs { 
-
     width: 300px;
     height: 180px;
     margin: 0 auto;
@@ -60,7 +59,6 @@ input::placeholder {
     font-size: 16px;
     padding-left: 12px;
   }
-
 
 .inputs { 
     width: 280px;
@@ -148,8 +146,7 @@ input::placeholder {
     cursor: pointer;
 }
 
-
-    img {
+ img {
         user-select: none;
         filter: contrast(150%) saturate(200%);
 }

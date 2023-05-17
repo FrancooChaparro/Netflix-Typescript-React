@@ -1,12 +1,12 @@
 import React, { useEffect, useState} from 'react';
 import styles from "../stylesheets/Search.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { Movies, UserActive, movieName } from '../redux/reducer';
+import { movieName } from '../redux/reducer';
 import { MovieObject } from "../types";
 import { getMovieName, MovieFilter } from '../redux/actions';
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 import { AiOutlineHome } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 export const Search = () => {
@@ -16,7 +16,7 @@ export const Search = () => {
   const [countrie, setCountrie] = useState<string>("");
   console.log(movie);
   const [nameTitle, setnameTitle] = useState<string>("Peliculas");
-
+  const navigate = useNavigate()
 
   const countrieName = (e:React.ChangeEvent<HTMLInputElement>): void => {
     setCountrie(e.target.value);
@@ -67,6 +67,9 @@ export const Search = () => {
     },3000)
   },[])
   
+  function linktag (id: any) { 
+    navigate("/Details/" + id)
+  }
 
 
   return (
@@ -92,7 +95,7 @@ export const Search = () => {
               <div className={styles.movieContainer}>
            
              {load ? <div className={styles.center}><div className={styles.spinner}></div></div> : movie.length > 0 ? movie.map((movie: MovieObject, index) => { 
-  return <img key={index} src={movie.image} width={"200px"} height={"350px"} alt={movie.id} /> 
+  return <img onClick={()=> linktag(movie.id)} key={index} src={movie.image} className={styles.imgBackground} alt={movie.id} /> 
 }).slice(0,12) : <h3 style={{color: "red"}}>No se encontro resultados</h3>  } 
             
             </div>   

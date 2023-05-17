@@ -3,7 +3,7 @@ import { Navbar } from "./Navbar";
 import styles from "../stylesheets/Home.module.css";
 import { Landing } from "./Landing";
 import { useDispatch, useSelector } from "react-redux";
-import { Movies, UserActive } from "../redux/reducer";
+import { Movies } from "../redux/reducer";
 import { MovieObject } from "../types";
 import { Footer } from "./Footer";
 import { myList } from "../redux/reducer";
@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const AllMovies: Array<MovieObject> | [] = useSelector(Movies);
-  const User = useSelector(UserActive);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [num, setNum] = useState<number>(0);
