@@ -13,6 +13,8 @@ interface MyPropsCard {
   AddorOut: string;
 }
 
+
+
 export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew, AddorOut }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useDispatch();
