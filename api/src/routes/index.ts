@@ -175,3 +175,30 @@ router.get("/movie", async (req: Request, res: Response) => {
     });
   }
 })
+
+
+router.get("/movie/:id", async (req:Request, res: Response) => {
+  const { id } = req.params;
+
+try {
+  const movieID = await movies.findByPk(id);
+
+  if (movieID === null) {
+    res.status(500).json({
+      status: false,
+      msg: `Parametro de busqueda invalido`,
+      errorCode: 10
+    });
+  } else {
+    res.status(200).json({
+      status: true,
+      result: movieID
+    });
+  }
+} catch (error) {
+  res.status(400).json({
+    status: false,
+    msg: `Entro al catch, ${error}`,
+    errorCode: 400
+  });
+}})

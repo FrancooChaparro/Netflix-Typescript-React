@@ -52,6 +52,10 @@
     border-top: 1px solid grey;
 }
 
-.containerMenu span { 
+.spans { 
     cursor: pointer;
+}
+
+.spans:hover { 
+    text-shadow: 0 0 10px #b3aeae;
 }

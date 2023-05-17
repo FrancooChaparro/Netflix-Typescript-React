@@ -34,7 +34,8 @@ export const Home = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   let MyListMovies: Array<MovieObject> | [] = useSelector(myList);
-
+  console.log(Music, "Music");
+    
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);

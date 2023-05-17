@@ -34,7 +34,7 @@ export const UserMenu: React.FC<typeProps> = ({ type }) => {
             </div>
         </div>
         
-        <div className={styles.containerLogout}><span onClick={CerrarSes}>Sign out of Netflix</span></div>
+        <div className={styles.containerLogout}><span className={styles.spans} onClick={CerrarSes}>Sign out of Netflix</span></div>
     </div>
   )
 }

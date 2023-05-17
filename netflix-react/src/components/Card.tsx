@@ -6,6 +6,7 @@ import { MovieObject } from "../types";
 import { addMyList, OutMyList } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { myList } from "../redux/reducer";
+import { Link } from "react-router-dom";
 
 interface MyPropsCard {
   cardProps: MovieObject;
@@ -92,7 +93,7 @@ export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew, AddorOut }) => {
           </div>
           {showMenu && <div className={styles.addMenu}>
             <div className={styles.addMenu1} onClick={() => addMyListToStore(cardProps, AddorOut)}>{AddorOut}</div>
-            <div className={styles.addMenu2}>Ver Detalles</div>
+            <Link to={"/Details/" + cardProps.id}><div className={styles.addMenu2}>Ver Detalles</div></Link>
           </div> }
         </div>
       )}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from "../stylesheets/Landing.module.css";
 import { Card } from './Card';
-import { MovieObject } from "../types"
+import { MovieObject } from "../types";
 
 interface MyProps {
  movie: Array<MovieObject>,
@@ -40,11 +40,12 @@ export const Landing:  React.FC<MyProps> = ({ movie, title, isNew }) => {
           })
         }
        <div className={styles.btnDiv}><button onClick={handleNext}>{der}</button></div>
-            {/* <Card cardProps={movie[6]} isNew={isNew}/>
-            <Card cardProps={movie[5]} isNew={isNew}/>
-            <Card cardProps={movie[0]} isNew={isNew}/>
-            <Card cardProps={movie[12]} isNew={isNew}/> */}
         </div>
     </div>
   )
 }
+
+{/* <Card cardProps={movie[6]} isNew={isNew}/>
+<Card cardProps={movie[5]} isNew={isNew}/>
+<Card cardProps={movie[0]} isNew={isNew}/>
+<Card cardProps={movie[12]} isNew={isNew}/> */}

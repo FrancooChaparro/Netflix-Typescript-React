@@ -9,6 +9,7 @@ import { Footer } from './components/Footer';
 import { Search } from './components/Search';
 import { GetMovies } from './redux/actions';
 import { useDispatch } from 'react-redux';
+import { Details } from './components/Details';
 
 function App() {
   const dispatch = useDispatch()
@@ -19,6 +20,7 @@ function App() {
     };
     fetchData();
   }, []);
+
   return (
     <div className="App">
       <Routes>
@@ -27,6 +29,7 @@ function App() {
       <Route path='/Login' element={<Loginx />} />
       <Route path='/User' element={<Watching />}  />
       <Route path='/Search' element={<Search />}  />
+      <Route path='/Details/:id' element={<Details />}  />
       </Routes>  
     {/* <Footer /> */}
     </div>
