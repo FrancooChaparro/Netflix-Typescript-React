@@ -1,7 +1,7 @@
 import React, { useEffect, useState} from 'react';
 import styles from "../stylesheets/Search.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { Movies, movieName } from '../redux/reducer';
+import { Movies, UserActive, movieName } from '../redux/reducer';
 import { MovieObject } from "../types";
 import { getMovieName, MovieFilter } from '../redux/actions';
 import { MdOutlineWorkspacePremium } from "react-icons/md";

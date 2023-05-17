@@ -15,6 +15,7 @@ export const UserMenu: React.FC<typeProps> = ({ type }) => {
   const userActive = useSelector(UserActive)
   const navigate = useNavigate()
 
+
   function CerrarSes(e: React.MouseEvent<HTMLSpanElement, MouseEvent>) {
     e.preventDefault();
     setTimeout(() => {

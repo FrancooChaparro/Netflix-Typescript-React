@@ -6,7 +6,8 @@ import { MovieObject } from "../types";
 import { addMyList, OutMyList } from "../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { myList } from "../redux/reducer";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 interface MyPropsCard {
   cardProps: MovieObject;
@@ -19,6 +20,7 @@ interface MyPropsCard {
 export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew, AddorOut }) => {
   const [loading, setLoading] = useState<boolean>(true);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [showMenu, setShowMenu] = useState<boolean>(false)
   let MyListMovies: Array<MovieObject> | [] = useSelector(myList);
   
@@ -49,6 +51,10 @@ export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew, AddorOut }) => {
     }
   };
 
+  function linktag () { 
+    navigate("/Details/" + cardProps.id)
+  }
+
   return (
     <div className={styles.containerCard}>
       <div className={styles.containerCardInfo}>
@@ -73,8 +79,8 @@ export const Card: React.FC<MyPropsCard> = ({ cardProps, isNew, AddorOut }) => {
           </div>
           <div className={styles.details2}>
             <div className={styles.icons}>
-              <div className={styles.play}>
-                <BsFillPlayFill />
+            <div className={styles.play}>
+            <BsFillPlayFill onClick={linktag}/>
               </div>
               <div onClick={()=> setShowMenu(!showMenu)} className={styles.more}>
                 <BsChevronDown className={showMenu ? styles.showOpen : styles.show}/>
