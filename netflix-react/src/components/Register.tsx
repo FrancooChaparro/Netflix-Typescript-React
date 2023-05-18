@@ -211,15 +211,3 @@ export const Register = () => {
   );
 };
 
-  /* <form action=""  onSubmit={handleSubmit}>
-              <input className={(errors.username && inputValues.username)  ? styles.inputsError : styles.inputs} onChange={handleChange} value={inputValues.username} name='username' type="text" placeholder='Username' />
-              {(errors.username && inputValues.username.length > 0 ) && (<span className={styles.spanError}>{errors.username}</span>)}
-              <input className={(errors.email && inputValues.email)  ? styles.inputsError : styles.inputs} onChange={handleChange} value={inputValues.email} name='email' type="text" placeholder='Email' />
-              {(errors.email && inputValues.email.length > 0 ) && (<span className={styles.spanError}>{errors.email}</span>)}
-              <input className={(errors.password && inputValues.password) ? styles.inputsError : styles.inputs} onChange={handleChange} value={inputValues.password} name="password" type="password" placeholder='Password'/>
-              {(errors.password && inputValues.password.length > 0 ) && (<span className={styles.spanError}>{errors.password}</span>)}
-              <div>
-                <button type='submit' style={{color: "black"}} className={styles.btn}>Sign up</button>
-              </div>
-            </form> */
-

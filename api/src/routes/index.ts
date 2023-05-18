@@ -5,10 +5,8 @@ import axios from "axios";
 import { Model, Op } from "sequelize";
 import { User } from "./types";
 import { compare, encrypt } from "../helpers/bcrypt";
-const router = Router();
 
-// Perfeccionar register
-// Login Bcript
+const router = Router();
 
 router.post("/users", async (req: Request, res: Response) => {
   const { username, email, password } = req.body;

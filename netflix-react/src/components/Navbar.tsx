@@ -45,12 +45,12 @@ export const Navbar = () => {
      <img src={Logo} alt="" style={{height: "52px"}}/>
      </div>
      <div className={styles.containerInfo}>
-        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(0)}><span>Home</span></Link>
-        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(700)}><span>Series</span></Link>
-        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(700)}><span>Films</span></Link>
-        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(350)}><span>New & Popular</span></Link>
-        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(550)}><span>My List</span></Link>
-        <Link to={"/Home"} className={styles.link} onClick={()=> handleClick(800)}><span>Premium Netflix</span></Link>
+        <Link to={"/"} className={styles.link} onClick={()=> handleClick(0)}><span>Home</span></Link>
+        <Link to={"/"} className={styles.link} onClick={()=> handleClick(700)}><span>Series</span></Link>
+        <Link to={"/"} className={styles.link} onClick={()=> handleClick(700)}><span>Films</span></Link>
+        <Link to={"/"} className={styles.link} onClick={()=> handleClick(350)}><span>New & Popular</span></Link>
+        <Link to={"/"} className={styles.link} onClick={()=> handleClick(550)}><span>My List</span></Link>
+        <Link to={"/"} className={styles.link} onClick={()=> handleClick(800)}><span>Premium Netflix</span></Link>
      </div>
      <div className={styles.containerUser}>
 

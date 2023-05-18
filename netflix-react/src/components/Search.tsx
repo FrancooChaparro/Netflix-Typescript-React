@@ -76,8 +76,8 @@ export const Search = () => {
     <div className={styles.containerAll}>
         <div className={styles.containerNavbar}>
           <div className={styles.containerIcons}>
-         <Link to={"/Home"}><MdOutlineWorkspacePremium className={styles.icon}/></Link>
-         <Link to={"/Home"}><AiOutlineHome className={styles.icon}/></Link>
+         <Link to={"/"}><MdOutlineWorkspacePremium className={styles.icon}/></Link>
+         <Link to={"/"}><AiOutlineHome className={styles.icon}/></Link>
           </div>
           </div>
         <div className={styles.containerLeft}>

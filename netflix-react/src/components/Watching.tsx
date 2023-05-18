@@ -17,8 +17,8 @@ export const Watching = () => {
                 <h1>Who's Watching?</h1>
             </div>
             <div className={styles.bot}>
-               <Link to={"/Home"}><img src={Logo} alt="Logo" className={styles.Hover}/></Link>
-               <Link to={"/Home"} style={{color: "white", textDecoration: "none"}}> <h4>{ActiveUser?.username ? ActiveUser?.username : "Franco Chaparro"}</h4></Link>
+               <Link to={"/"}><img src={Logo} alt="Logo" className={styles.Hover}/></Link>
+               <Link to={"/"} style={{color: "white", textDecoration: "none"}}> <h4>{ActiveUser?.username ? ActiveUser?.username : "Franco Chaparro"}</h4></Link>
             </div>
         </div>
     </div>
