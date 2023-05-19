@@ -24,12 +24,14 @@
 .containerImg img {
   width: 80%;
   height: 83%;
+  filter: brightness(110%);
+
 }
 
 .containerData {
   width: 75%;
   height: 100%;
-  color: white;
+  color: white; 
 }
 .containerData h1 {
   font-size: 50px;

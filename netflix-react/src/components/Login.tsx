@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "../stylesheets/Register.module.css";
 import logo from "../images/Netflix_Logo.png";
 import { LoginForm } from "../types";
@@ -6,8 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { LoginUserSuccess } from "../redux/actions";
-import { gapi } from "gapi-script";
-import GoogleLogin from "react-google-login";
+
 import { Googlebtn } from "./Googlebtn"
 export const Loginx = () => {
   const dispatch = useDispatch();

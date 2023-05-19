@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../stylesheets/Login.module.css";
 import logo from "../images/Netflix_Logo.png";
-import { RegisterForm, User } from "../types";
+import { RegisterForm } from "../types";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUserSuccess } from "../redux/actions";
 import { useDispatch } from "react-redux";
@@ -86,7 +86,6 @@ export const Register = () => {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log("hola");
     if (!inputValues.username || !inputValues.email || !inputValues.password) {
         return alert("Missing required fields!");
     }
@@ -107,10 +106,6 @@ export const Register = () => {
             return alert("Password invalid require 1May 1Min")
         }
       }
-
-    //   if (emails.includes(inputValues.email)) {
-    //     return alert("Invalid",'Email already exists', "error")
-    // }
 
     const response = await axios.post(
       "http://localhost:3001/users",

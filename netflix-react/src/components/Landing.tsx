@@ -44,8 +44,3 @@ export const Landing:  React.FC<MyProps> = ({ movie, title, isNew }) => {
     </div>
   )
 }
-
-{/* <Card cardProps={movie[6]} isNew={isNew}/>
-<Card cardProps={movie[5]} isNew={isNew}/>
-<Card cardProps={movie[0]} isNew={isNew}/>
-<Card cardProps={movie[12]} isNew={isNew}/> */}

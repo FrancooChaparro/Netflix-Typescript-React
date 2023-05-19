@@ -1,7 +1,7 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { Action } from "redux";
-import { LoginForm, MovieObject, RegisterForm, User } from "../types";
-import { type } from "os";
+import { MovieObject, RegisterForm, User } from "../types";
+
 
 export const REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS";
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
@@ -33,10 +33,10 @@ export interface MoviesByName extends Action {
   payload: any;
 }
 
-export interface MovieFilter extends Action { 
-  type: typeof MOVIE_FILTER;
-  payload: string
-}
+// export interface MovieFilter extends Action { 
+//   type: typeof MOVIE_FILTER;
+//   payload: string
+// }
 
 
 export const MovieFilter = (paramsCategory: string) => { 

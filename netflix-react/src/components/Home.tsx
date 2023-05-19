@@ -56,7 +56,7 @@ export const Home = () => {
     }, 14000);
 
     return () => clearInterval(interval);
-  }, []);
+  },[]);
 
   
   const addMyListToStore = (props: MovieObject) => {
@@ -76,7 +76,6 @@ export const Home = () => {
   }
 
   const poster: MovieObject = terror[num];
-  console.log(poster);
   
   return (
     <div>
