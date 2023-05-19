@@ -3,10 +3,44 @@ import { user } from "../../db";
 import { movies } from "../../db";
 import axios from "axios";
 import { Model, Op } from "sequelize";
-import { User } from "./types";
 import { compare, encrypt } from "../helpers/bcrypt";
 
 const router = Router();
+
+router.post("googlepost", async (req: Request, res: Response) => { 
+  try {
+    const { username, email, password } = req.body;
+
+    if (!username || !email) return res.json({ msg: 'Missing required fields', success: false  });
+
+    await user.create({
+      username: username,
+      email: email,
+      password: "XDRWQDFF11as555oidashjaiwdmalsdiw87888259edfa123"
+    });
+    return res.json({ msg: `User create succesfully`, success: true });
+
+  } catch (error) {
+     return res.json({ msg: `Error 404 - ${error}` });
+  }
+});
+
+
+router.post("googlelogin", async (req, res) => { 
+  try {
+    const { email } = req.body;
+    const UserExist = await user.findOne({ where: { email: `${email}` } });
+    
+      res.status(200).send({
+        data: UserExist,
+        success: true,
+      });
+
+  } catch (error) {
+    return res.json({ msg: `Error 404 - ${error}` });
+  }
+});
+
 
 router.post("/users", async (req: Request, res: Response) => {
   const { username, email, password } = req.body;
