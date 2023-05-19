@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "../stylesheets/Login.module.css";
 import logo from "../images/Netflix_Logo.png";
-import { RegisterForm } from "../types";
+import { RegisterForm, User } from "../types";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUserSuccess } from "../redux/actions";
 import { useDispatch } from "react-redux";
@@ -61,6 +61,8 @@ export const Register = () => {
     password: "",
   });
 
+ 
+
   const [errors, setErrors] = useState({
     username: "",
     email: "",
@@ -115,7 +117,6 @@ export const Register = () => {
       inputValues
     );
     dispatch(registerUserSuccess(inputValues));
-    // alert("User created successfully")
     console.log(response);
 
     setInputValues({

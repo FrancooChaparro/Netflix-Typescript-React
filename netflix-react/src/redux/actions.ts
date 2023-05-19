@@ -84,9 +84,7 @@ export const GetMovies = async (): Promise<Movies> => {
   };
 };
 
-export const registerUserSuccess = (
-  user: RegisterForm
-): RegisterUserSuccessAction => {
+export const registerUserSuccess = (user: RegisterForm): RegisterUserSuccessAction => {
   return {
     type: REGISTER_USER_SUCCESS,
     payload: user,
@@ -94,6 +92,20 @@ export const registerUserSuccess = (
 };
 
 export const LoginUserSuccess = (user: User): LoginUserSuccessAction => {
+  return {
+    type: LOGIN_USER_SUCCESS,
+    payload: user,
+  };
+};
+
+export const registerGoogleSuccess = (user: User) => {
+  return {
+    type: REGISTER_USER_SUCCESS,
+    payload: user,
+  };
+};
+
+export const LoginGoogleSuccess = (user: User): LoginUserSuccessAction => {
   return {
     type: LOGIN_USER_SUCCESS,
     payload: user,

@@ -7,9 +7,9 @@ import { compare, encrypt } from "../helpers/bcrypt";
 
 const router = Router();
 
-router.post("googlepost", async (req: Request, res: Response) => { 
+router.post("/googlepost", async (req: Request, res: Response) => { 
   try {
-    const { username, email, password } = req.body;
+    const { username, email } = req.body;
 
     if (!username || !email) return res.json({ msg: 'Missing required fields', success: false  });
 
@@ -26,16 +26,27 @@ router.post("googlepost", async (req: Request, res: Response) => {
 });
 
 
-router.post("googlelogin", async (req, res) => { 
+router.post("/googlelogin", async (req, res) => { 
+  const { email } = req.body;
   try {
-    const { email } = req.body;
-    const UserExist = await user.findOne({ where: { email: `${email}` } });
-    
-      res.status(200).send({
-        data: UserExist,
-        success: true,
-      });
+    const UserExist: UserLog | Model<any, any> | null = (await user.findOne({
+      where: { email: `${email}` },
+    })) as UserLog | null;
 
+    if (UserExist) {
+        const finallyData = {
+          username: UserExist.username,
+          email: UserExist.email,
+        };
+
+        res.status(200).send({
+          data: finallyData,
+          success: true,
+        }) 
+    } else { 
+      return res.json({ msg: "User not found", success: false });
+    }  
+   
   } catch (error) {
     return res.json({ msg: `Error 404 - ${error}` });
   }
