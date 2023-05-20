@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from "../stylesheets/Landing.module.css";
 import { Card } from './Card';
 import { MovieObject } from "../types";

@@ -63,7 +63,7 @@ export const Search = () => {
       fetchData();
       setLoad(false);
     }, 3000);
-  }, []);
+  }, [dispatch, countrie]);
 
   function linktag(id: any) {
     navigate("/Details/" + id);

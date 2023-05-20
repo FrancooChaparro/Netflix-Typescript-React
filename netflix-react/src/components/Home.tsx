@@ -45,7 +45,7 @@ export const Home = () => {
   }, []);
 
   if (num === 19) {
-    setNum(0); // Reiniciar a la primera película
+    setNum(0);
   }
 
   useEffect(()=> {
@@ -63,14 +63,14 @@ export const Home = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       if (num === 19) {
-        setNum(0); // Reiniciar a la primera película
+        setNum(0);  
       } else {
         setNum((num) => num + 1);
       }
-    }, 1000);
+    }, 14000);
 
     return () => clearInterval(interval);
-  },[]);
+  },[num]);
 
   
   const addMyListToStore = (props: MovieObject) => {

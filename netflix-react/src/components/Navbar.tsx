@@ -49,52 +49,82 @@ export const Navbar = () => {
       </div>
       <div className={styles.containerInfo}>
         <Link to={"/"} className={styles.link} onClick={() => handleClick(0)}>
-          <span className={styles.span1} >Home</span>
+          <span className={styles.span1}>Home</span>
         </Link>
         <Link to={"/"} className={styles.link} onClick={() => handleClick(700)}>
-          <span className={styles.span1} >Series</span>
+          <span className={styles.span1}>Series</span>
         </Link>
         <Link to={"/"} className={styles.link} onClick={() => handleClick(700)}>
-          <span className={styles.span1} >Films</span>
+          <span className={styles.span1}>Films</span>
         </Link>
         <Link to={"/"} className={styles.link} onClick={() => handleClick(350)}>
-          <span className={styles.span1} >New & Popular</span>
+          <span className={styles.span1}>New & Popular</span>
         </Link>
         <Link to={"/"} className={styles.link} onClick={() => handleClick(550)}>
-          <span className={styles.span1} >My List</span>
+          <span className={styles.span1}>My List</span>
         </Link>
         <Link to={"/"} className={styles.link} onClick={() => handleClick(800)}>
-          <span className={styles.span1} >Premium Netflix</span>
+          <span className={styles.span1}>Premium Netflix</span>
         </Link>
-
-        <span className={styles.btnBrowse} onClick={()=>setShowBrowse(!showBrowse)} >Browse</span>
-    <BsChevronDown
-                onClick={()=>setShowBrowse(!showBrowse)}
-                className={showBrowse ? styles.ar : styles.ar2}
-             
-              />
-
-       {showBrowse && <div className={showBackground ? styles.Browse : styles.BrowseOpacity}>
-        <Link to={"/"} className={styles.link} onClick={() => handleClick(0)}>
-          <p>Home</p>
-        </Link>
-        <Link to={"/"} className={styles.link} onClick={() => handleClick(700)}>
-          <p>Series</p>
-        </Link>
-        <Link to={"/"} className={styles.link} onClick={() => handleClick(700)}>
-          <p>Films</p>
-        </Link>
-        <Link to={"/"} className={styles.link} onClick={() => handleClick(350)}>
-          <p>New & Popular</p>
-        </Link>
-        <Link to={"/"} className={styles.link} onClick={() => handleClick(550)}>
-          <p>My List</p>
-        </Link>
-        <Link to={"/"} className={styles.link} onClick={() => handleClick(800)}>
-          <p>Premium Netflix</p>
-        </Link>
+        <div className={styles.containerBrowse}>
+          <span
+            className={styles.btnBrowse}
+            onClick={() => setShowBrowse(!showBrowse)}
+          >
+            Browse{" "}
+            <span>
+              <BsChevronDown />
+            </span>
+          </span>
         </div>
-}
+        {showBrowse && (
+          <div
+            className={showBackground ? styles.Browse : styles.BrowseOpacity}
+          >
+            <Link
+              to={"/"}
+              className={styles.link}
+              onClick={() => handleClick(0)}
+            >
+              <p>Home</p>
+            </Link>
+            <Link
+              to={"/"}
+              className={styles.link}
+              onClick={() => handleClick(700)}
+            >
+              <p>Series</p>
+            </Link>
+            <Link
+              to={"/"}
+              className={styles.link}
+              onClick={() => handleClick(700)}
+            >
+              <p>Films</p>
+            </Link>
+            <Link
+              to={"/"}
+              className={styles.link}
+              onClick={() => handleClick(350)}
+            >
+              <p>New & Popular</p>
+            </Link>
+            <Link
+              to={"/"}
+              className={styles.link}
+              onClick={() => handleClick(550)}
+            >
+              <p>My List</p>
+            </Link>
+            <Link
+              to={"/"}
+              className={styles.link}
+              onClick={() => handleClick(800)}
+            >
+              <p>Premium Netflix</p>
+            </Link>
+          </div>
+        )}
       </div>
       <div className={styles.containerUser}>
         <div className={styles.arriba}>
@@ -107,7 +137,7 @@ export const Navbar = () => {
             <IoNotificationsOutline style={{ cursor: "pointer" }} />
           </div>
           <div className={styles.userDiv1}>
-            <img src={Avatar} alt="" />
+            <img src={Avatar} alt="ProfilePick" />
             <div className={styles.arrow}>
               <BsChevronDown
                 onClick={() => setShowMenu(!showMenu)}
