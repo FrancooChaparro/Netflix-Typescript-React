@@ -13,7 +13,6 @@ export const Search = () => {
   const [load, setLoad] = useState<boolean>(true);
   const dispatch = useDispatch();
   const [countrie, setCountrie] = useState<string>("");
-  console.log(movie);
   const [nameTitle, setnameTitle] = useState<string>("Peliculas");
   const navigate = useNavigate();
 
@@ -26,7 +25,6 @@ export const Search = () => {
     setTimeout(() => {
       setLoad(false);
     }, 1300);
-    console.log("click", e.currentTarget.value);
     const retorno = MovieFilter(e.currentTarget.value);
     setnameTitle(e.currentTarget.value);
     dispatch(retorno);
