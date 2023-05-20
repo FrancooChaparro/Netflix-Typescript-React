@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { gapi } from "gapi-script";
 import GoogleLogin from "react-google-login";
 import axios from "axios";

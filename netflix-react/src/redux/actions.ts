@@ -33,11 +33,6 @@ export interface MoviesByName extends Action {
   payload: any;
 }
 
-// export interface MovieFilter extends Action { 
-//   type: typeof MOVIE_FILTER;
-//   payload: string
-// }
-
 
 export const MovieFilter = (paramsCategory: string) => { 
   return  {

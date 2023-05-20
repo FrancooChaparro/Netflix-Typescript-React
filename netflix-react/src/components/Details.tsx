@@ -1,14 +1,13 @@
 import styles from "../stylesheets/Details.module.css";
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { MovieObject } from "../types";
-import { useSelector } from "react-redux";
-import { UserActive } from "../redux/reducer";
+
 
 export const Details = () => {
   const [movieID, setmovieID] = useState<MovieObject>();
   const { id } = useParams(); // Consigo el id
-  const User = useSelector(UserActive);
+
 
   // Con un useEffect obtengo la info y la guardo en el state y aparte dejo vacio el state
   useEffect(() => {

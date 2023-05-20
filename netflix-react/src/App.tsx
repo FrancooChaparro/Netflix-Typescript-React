@@ -5,7 +5,6 @@ import { Loginx } from './components/Login';
 import { Register } from './components/Register';
 import { Home } from "./components/Home"
 import { Watching } from './components/Watching';
-import { Footer } from './components/Footer';
 import { Search } from './components/Search';
 import { GetMovies } from './redux/actions';
 import { useDispatch } from 'react-redux';
@@ -31,7 +30,6 @@ function App() {
       <Route path='/Search' element={<Search />}  />
       <Route path='/Details/:id' element={<Details />}  />
       </Routes>  
-    {/* <Footer /> */}
     </div>
   );
 }
