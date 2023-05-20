@@ -67,7 +67,7 @@ export const Navbar = () => {
           <span className={styles.span1} >Premium Netflix</span>
         </Link>
 
-        <span className={styles.btnBrowse} onClick={()=>setShowBrowse(!showBrowse)} style={{marginTop: "15px"}}>Browse</span>
+        <span className={styles.btnBrowse} onClick={()=>setShowBrowse(!showBrowse)} >Browse</span>
     <BsChevronDown
                 onClick={()=>setShowBrowse(!showBrowse)}
                 className={showBrowse ? styles.ar : styles.ar2}

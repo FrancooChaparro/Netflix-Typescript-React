@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "../stylesheets/Landing.module.css";
 import { Card } from './Card';
 import { MovieObject } from "../types";
@@ -6,14 +6,17 @@ import { MovieObject } from "../types";
 interface MyProps {
  movie: Array<MovieObject>,
  title: string,
- isNew: boolean
+ isNew: boolean,
+ moviesToShow: number
 }
 
-export const Landing:  React.FC<MyProps> = ({ movie, title, isNew }) => {
+export const Landing:  React.FC<MyProps> = ({ movie, title, isNew, moviesToShow }) => {
   const [startIndex, setStartIndex] = useState(0);
-  const moviesToShow = 4; // Cantidad de películas a mostrar a la vez
+
   const izq = "<"
   const der = ">"
+
+
 
 
   const handlePrev = () => {
@@ -33,13 +36,13 @@ export const Landing:  React.FC<MyProps> = ({ movie, title, isNew }) => {
             <h1>{title}</h1>
         </div>
         <div className={styles.containerCards}>
-        <div className={styles.btnDivI}><button onClick={handlePrev}>{izq}</button></div>
+        {moviesToShow === 4 && <div className={styles.btnDivI}><button onClick={handlePrev}>{izq}</button></div> }
         {
           movie.length > 0 && movie.slice(startIndex, startIndex + moviesToShow).map((mov, index) => {
             return <Card key={index} cardProps={mov} isNew={isNew} AddorOut={"Añadir de mi lista"} />;
           })
         }
-       <div className={styles.btnDiv}><button onClick={handleNext}>{der}</button></div>
+       {moviesToShow === 4 && <div className={styles.btnDiv}><button onClick={handleNext}>{der}</button></div> }
         </div>
     </div>
   )

@@ -6,12 +6,15 @@ import { MovieObject } from "../types"
 interface MyProps {
   movie: Array<MovieObject>,
   title: string,
-  isNew: boolean
+  isNew: boolean,
+  moviesToShow: number
+
 }
 
-export const MyList: React.FC<MyProps> = ({ movie, title, isNew }) => {
+ 
+export const MyList: React.FC<MyProps> = ({ movie, title, isNew, moviesToShow }) => {
   const [startIndex, setStartIndex] = useState(0);
-  const moviesToShow = 4; // Cantidad de películas a mostrar a la vez
+  // const moviesToShow = 4; // Cantidad de películas a mostrar a la vez
   const izq = "<"
   const der = ">"
 
@@ -34,13 +37,13 @@ export const MyList: React.FC<MyProps> = ({ movie, title, isNew }) => {
         <h1>{title}</h1>
       </div>
       <div className={`${styles.containerCards} ${styles.transitionContainer}`}>
-       <div className={styles.btnDivI}><button onClick={handlePrev}>{izq}</button></div>
+        {moviesToShow === 4 && <div className={styles.btnDivI}><button onClick={handlePrev}>{izq}</button></div>}
         {
           movie.length > 0 && movie.slice(startIndex, startIndex + moviesToShow).map((mov, index) => {
             return <Card key={index} cardProps={mov} isNew={isNew} AddorOut={"Quitar de mi lista"} />;
           })
         }
-      {movie.length > 3 && <div className={styles.btnDiv}><button onClick={handleNext}>{der}</button></div>} 
+       {movie.length > 3 &&  moviesToShow === 4 && <div className={styles.btnDiv}><button onClick={handleNext}>{der}</button></div>} 
       </div>
     </div>
   );

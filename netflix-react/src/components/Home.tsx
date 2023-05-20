@@ -18,6 +18,7 @@ export const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [num, setNum] = useState<number>(0);
+  const [moviesToShow, setmoviesToShow] = useState(4);
   const terror: Array<MovieObject> | [] = AllMovies.filter(
     (movie: MovieObject) => movie.gender === "Terror"
   );
@@ -46,6 +47,19 @@ export const Home = () => {
   if (num === 19) {
     setNum(0); // Reiniciar a la primera película
   }
+
+  useEffect(()=> {
+    const handleResize = () => {
+      if (window.innerWidth <= 750) {
+        setmoviesToShow(2);
+      } else {
+        setmoviesToShow(4)
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    handleResize(); 
+    return () => window.removeEventListener("resize", handleResize);
+  }, [])
   useEffect(() => {
     const interval = setInterval(() => {
       if (num === 19) {
@@ -53,7 +67,7 @@ export const Home = () => {
       } else {
         setNum((num) => num + 1);
       }
-    }, 14000);
+    }, 1000);
 
     return () => clearInterval(interval);
   },[]);
@@ -101,14 +115,14 @@ export const Home = () => {
               </div>
             </div>
           </div>
-          <Landing isNew={true} title={"Trending Now"} movie={trending} />
+          <Landing  moviesToShow={moviesToShow} isNew={true} title={"Trending Now"} movie={trending} />
           {MyListMovies.length > 0 && (
-            <MyList isNew={false} title={"My List"} movie={MyListMovies} />
+            <MyList moviesToShow={moviesToShow} isNew={false} title={"My List"} movie={MyListMovies} />
           )}
-          <Landing isNew={false} title={"Music"} movie={Music} />
-          <Landing isNew={false} title={"Comedy"} movie={comedy} />
-          <Landing isNew={false} title={"Terror"} movie={terror} />
-          <Landing isNew={false} title={"Programas TV"} movie={tv} />
+          <Landing moviesToShow={moviesToShow} isNew={false} title={"Music"} movie={Music} />
+          <Landing moviesToShow={moviesToShow} isNew={false} title={"Comedy"} movie={comedy} />
+          <Landing moviesToShow={moviesToShow} isNew={false} title={"Terror"} movie={terror} />
+          <Landing moviesToShow={moviesToShow} isNew={false} title={"Programas TV"} movie={tv} />
         </div>
       )}
       <Footer />

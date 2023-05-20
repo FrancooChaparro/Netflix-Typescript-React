@@ -17,7 +17,7 @@
     z-index: 1000;
     transition: background-color 0.5s ease;
 }
-
+/* Logo13 info67 user20*/
 .containerLogo { 
     width: 13%;
     display: flex;
@@ -120,14 +120,42 @@
 .link { 
     text-decoration: none;
 }
+.Browse {
+    display: none;
+}
+.ar {
+    display: none;
+}
+.ar2 {
+    display: none;
+}
 
-
-
+.btnBrowse {
+    display: none;
+    margin-top: 15px;
+}
 @media screen and (max-width: 928px) {
     .containerLogo img{
         height: 42px
     }
 }  
+
+
+/* Logo13 info67 user20*/
+
+@media screen and (max-width: 810px) { 
+    .containerInfo {
+        width: 57%;
+    }
+    .containerUser {
+        width: 30%;
+    }
+    .containerInfo span {
+        font-size: 14px;
+    }
+}
+
+
 
 
 @media screen and (max-width: 728px) {
@@ -149,23 +177,76 @@
      .span1 {
        display: none;
     } 
+
     .Browse {
         display: flex;
+        display: block;
         justify-content: center;
         flex-direction: column;
         border: 2px solid black;
         background-color: rgb(0, 0, 0);
         z-index: 22;
+        margin-top: 20px;
     }
     .BrowseOpacity {
         display: flex;
+        display: block;
         justify-content: center;
         flex-direction: column;
         border: 2px solid black;
         background-color: rgb(0, 0, 0, 0.9);
         z-index: 22;
+        margin-top: 20px;
+
+    }
+    .btnBrowse {
+        display: block;
+    }
+    .ar {
+        display: block;
+        position: absolute;
+        bottom: 22px;
+        left: 156px;
+        font-size: 12px;
+        color: white;
+        cursor: pointer;
+        transform: rotate(180deg);
+        left: 29%;
+    }
+    .ar2 {
+        display: block;
+        position: absolute;
+        bottom: 22px;
+        left: 156px;
+        font-size: 12px;
+        color: white;
+        cursor: pointer;
+        left: 29%;
     }
 }  
+
+@media screen and (max-width: 620px) { 
+    .ar {
+        left: 30%;
+
+    }
+    .ar2 {
+        left: 30%;
+    }
+}
+
+@media screen and (max-width: 520px) { 
+    .ar {
+        left: 32%;
+
+    }
+    .ar2 {
+        left: 32%;
+    }
+
+ }
+
+
 
 
 @media screen and (max-width: 468px) {
@@ -178,6 +259,7 @@
     .contentes {
         padding-right: 18px;
     }
+
     .Browse {
         margin-top: 20px;
     }
@@ -200,5 +282,23 @@
         color: white;
         font-size: 12px;
         cursor: pointer;
+    }
+ }
+
+ @media screen and (max-width: 445px) { 
+    .ar {
+        left: 149px;
+    }
+    .ar2 {
+        left: 149px;
+    }
+ }
+
+ @media screen and (max-width: 425px) { 
+    .ar {
+        left: 144px;
+    }
+    .ar2 {
+        left: 144px;
     }
  }

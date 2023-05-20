@@ -98,3 +98,17 @@
     }
   }
   
+
+  @media screen and (max-width: 800px) { 
+    .containerData {
+        top: 25%;
+        width: 70%;
+    }
+  }
+
+  @media screen and (max-width: 550px) { 
+    .containerData {
+        top: 18%;
+        width: 70%;
+    }
+  }
