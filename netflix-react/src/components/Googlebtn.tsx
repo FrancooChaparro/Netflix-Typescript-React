@@ -27,7 +27,6 @@ export const Googlebtn = () => {
       const login = await axios.post("http://localhost:3001/googlelogin", {
         email: object.email,
       });
-      console.log(login);
       dispatch(LoginGoogleSuccess(login.data.data));
       setTimeout(() => {
         navigate("/User");

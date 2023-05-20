@@ -41,8 +41,6 @@ export const Loginx = () => {
         inputValues
       );
       if (response.data.success) {
-        console.log(response.data.data, "Datos Completados");
-
         setTimeout(() => {
           dispatch(LoginUserSuccess(response.data.data));
           setInputValues({
