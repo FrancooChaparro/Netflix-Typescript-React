@@ -46,3 +46,9 @@
 .Hover:hover { 
     box-shadow: 1px 1px 4px 4px rgb(233, 226, 226);
 }
+
+@media screen and (max-width: 875px)  { 
+    .top { 
+        font-size: 16px;
+    }
+} 

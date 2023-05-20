@@ -113,7 +113,31 @@ export const Search = () => {
       <div className={styles.containerRight}>
         <h1>{nameTitle}</h1>
 
+
+        
         <div className={styles.movieContainer}>
+  {load ? (
+    <div className={styles.center}>
+      <div className={styles.spinner}></div>
+    </div>
+  ) : movie.length > 0 ? (
+    <div className={styles.imageContainer}>
+      {movie.slice(0, 12).map((movie: MovieObject, index) => (
+        <img
+          onClick={() => linktag(movie.id)}
+          key={index}
+          src={movie.image}
+          className={styles.imgBackground}
+          alt={movie.id}
+        />
+      ))}
+    </div>
+  ) : (
+    <h3>No se encontraron resultados</h3>
+  )}
+</div>
+
+        {/* <div className={styles.movieContainer}>
           {load ? (
             <div className={styles.center}>
               <div className={styles.spinner}></div>
@@ -135,7 +159,7 @@ export const Search = () => {
           ) : (
             <h3>No se encontro resultados</h3>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

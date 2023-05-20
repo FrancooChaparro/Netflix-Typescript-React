@@ -33,6 +33,10 @@
   height: 100%;
   color: white; 
 }
+
+.containerData p { 
+  width: 85%;
+}
 .containerData h1 {
   font-size: 50px;
 }
@@ -53,3 +57,52 @@
       transform: rotate(360deg);
     }
   }
+
+  @media screen and (max-width: 855px)  { 
+    .containerData h1{
+      font-size: 28px;
+    width: 90%;
+
+    }
+    .containerImg {
+      width: 100%;
+      height: 35%;
+      filter: brightness(110%);
+    
+    }
+    .containerData {
+      height: 65%;
+      width: 95%;
+      padding-left: 10%;
+
+    }
+    .container { 
+      height: 800px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+} 
+
+@media screen and (max-width: 645px)  { 
+  .containerData h1{
+    font-size: 24px;
+    width: 90%;
+  }
+ }
+
+ @media screen and (max-width: 510px)  { 
+  .containerData h1{
+   
+    width: 90%;
+    font-size: 22px;
+  }
+ }
+
+ @media screen and (max-width: 450px)  { 
+  .containerData h1{
+    font-size: 22px;
+    width: 90%;
+
+  }
+ }

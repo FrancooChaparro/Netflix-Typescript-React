@@ -45,7 +45,7 @@ export const Details = () => {
                 {movieID?.date} · {movieID?.gender} · ({movieID?.language.toUpperCase()})
               </h3>
               <h2>Overview</h2>
-              <p style={{width: "85%"}}>{movieID?.overview}.</p>
+              <p>{movieID?.overview}.</p>
             </div>
           </div>
         </div>
