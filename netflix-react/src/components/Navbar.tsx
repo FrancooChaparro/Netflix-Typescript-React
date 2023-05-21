@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import styles from "../stylesheets/Navbar.module.css";
 import Logo from "../images/Netflix_Logo.png";
 import Avatar from "../images/Netflix-avatar.png";

@@ -1,5 +1,5 @@
 import styles from "../stylesheets/Details.module.css";
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import {  useParams } from "react-router-dom";
 import { MovieObject } from "../types";
 

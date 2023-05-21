@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "../stylesheets/Search.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { movieName } from "../redux/reducer";
@@ -63,7 +63,7 @@ export const Search = () => {
       fetchData();
       setLoad(false);
     }, 3000);
-  }, [dispatch, countrie]);
+  }, []);
 
   function linktag(id: any) {
     navigate("/Details/" + id);

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "./Navbar";
 import styles from "../stylesheets/Home.module.css";
 import { Landing } from "./Landing";
@@ -67,7 +67,7 @@ export const Home = () => {
       } else {
         setNum((num) => num + 1);
       }
-    }, 14000);
+    }, 13000);
 
     return () => clearInterval(interval);
   },[num]);

@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import { useEffect} from 'react';
 import './App.css';
 import { Route, Routes } from "react-router-dom";
 import { Loginx } from './components/Login';

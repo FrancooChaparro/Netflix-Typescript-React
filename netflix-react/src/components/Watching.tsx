@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from "../stylesheets/Watching.module.css";
 import Logo from "../images/Netflix-avatar.png";
 import { Link } from "react-router-dom";

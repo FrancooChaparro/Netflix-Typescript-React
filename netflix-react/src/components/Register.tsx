@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "../stylesheets/Login.module.css";
 import logo from "../images/Netflix_Logo.png";
 import { RegisterForm } from "../types";

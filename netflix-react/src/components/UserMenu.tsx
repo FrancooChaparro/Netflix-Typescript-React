@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from "../stylesheets/UserMenu.module.css";
 import Avatar from "../images/Netflix-avatar.png";
 import { useSelector } from 'react-redux';

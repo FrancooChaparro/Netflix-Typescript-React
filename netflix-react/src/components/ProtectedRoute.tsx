@@ -1,5 +1,5 @@
 import { useEffect, useState, ReactNode } from "react";
-import { Navigate, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import styles from "../stylesheets/Footer.module.css"
 
 interface Props {

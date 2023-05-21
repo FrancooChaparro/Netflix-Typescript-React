@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from "../stylesheets/Footer.module.css";
 import { SiGmail, SiGithub, SiLinkedin, SiWhatsapp } from "react-icons/si";
 
