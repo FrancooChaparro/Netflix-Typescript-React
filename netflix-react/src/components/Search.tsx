@@ -63,6 +63,7 @@ export const Search = () => {
       fetchData();
       setLoad(false);
     }, 3000);
+    // eslint-disable-next-line
   }, []);
 
   function linktag(id: any) {

@@ -49,6 +49,7 @@ export const Home = () => {
   }
 
   useEffect(()=> {
+    // eslint-disable-next-line
     const handleResize = () => {
       if (window.innerWidth <= 750) {
         setmoviesToShow(2);

@@ -18,6 +18,7 @@ function App() {
       dispatch(moviesAction);
     };
     fetchData();
+    // eslint-disable-next-line
   }, []);
 
   return (

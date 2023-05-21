@@ -29,6 +29,7 @@ export const Details = () => {
         overview: "",
         title: "",
       });
+      // eslint-disable-next-line
   }, []);
 
   return (
