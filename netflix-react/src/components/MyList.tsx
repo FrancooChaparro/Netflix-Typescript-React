@@ -14,7 +14,6 @@ interface MyProps {
  
 export const MyList: React.FC<MyProps> = ({ movie, title, isNew, moviesToShow }) => {
   const [startIndex, setStartIndex] = useState(0);
-  // const moviesToShow = 4; // Cantidad de películas a mostrar a la vez
   const izq = "<"
   const der = ">"
 
