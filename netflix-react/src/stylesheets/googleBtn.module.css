@@ -1,0 +1,15 @@
+.googleBtn { 
+    border-radius: 50%;
+    height: 47px;
+    width: 47px;
+    background-color: white;
+    transition: 1s;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.googleBtn:hover {
+    opacity: 0.6;
+}

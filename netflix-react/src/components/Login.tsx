@@ -6,8 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { LoginUserSuccess } from "../redux/actions";
+import { GoogleBtn } from "./Googlebtn"
 
-import { Googlebtn } from "./Googlebtn"
 export const Loginx = () => {
   const dispatch = useDispatch();
   const [errormsg, setErrormsg] = useState<boolean>(false);
@@ -103,7 +103,7 @@ export const Loginx = () => {
               </form>
             </div>
             <div className={styles.containera}>
-                  <Googlebtn /> 
+                  <GoogleBtn /> 
             </div>
           
             <div className={styles.forminfo}>
