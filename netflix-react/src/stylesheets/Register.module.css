@@ -26,7 +26,7 @@
     user-select: none;
     background-color: rgba(0, 0, 0, 0.7);     
     width: 450px;
-    height: 630px;
+    height: 610px;
     display: flex;
     border-radius: 10px;
     flex-direction: column;
@@ -115,10 +115,9 @@ input::placeholder {
 }
 
 .forminfo {
-    padding-top: 45px;
     width: 300px;
-    margin: 0 auto;   
-    /* margin-top: -38px; */
+    margin: 0 auto;  
+    padding-top: 10px; 
 }
 
 .forminfo span { 
