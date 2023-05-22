@@ -58,7 +58,8 @@ const rootReducer = (state = initialState, action: AnyAction): AppState => {
       case MOVIE_BY_NAME:   
       return { 
         ...state, 
-        allMovies: action.payload
+        allMovies: action.payload,
+        
       }
       case MOVIE_FILTER: 
       return { 

@@ -10,6 +10,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 export const Search = () => {
   let movie: Array<MovieObject> | [] = useSelector(movieName);
+  console.log(movie);
+  
   const [load, setLoad] = useState<boolean>(true);
   const dispatch = useDispatch();
   const [countrie, setCountrie] = useState<string>("");

@@ -13,6 +13,7 @@ import { Details } from './components/Details';
 function App() {
   const dispatch = useDispatch()
   useEffect(() => {
+    
     const fetchData = async () => {
       const moviesAction = await GetMovies();
       dispatch(moviesAction);
