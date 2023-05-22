@@ -169,3 +169,9 @@ input::placeholder {
     
     }
 } 
+
+@media screen and (max-width: 495px)  { 
+    .containerAll { 
+        height: 100vh;
+    }
+} 

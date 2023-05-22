@@ -14,7 +14,6 @@ import { addMyList } from "../redux/actions";
 import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
-  // const [pelis, setpelis] Array<></>
   const AllMovies: Array<MovieObject> | [] = useSelector(Movies);
   const dispatch = useDispatch();
   const navigate = useNavigate();

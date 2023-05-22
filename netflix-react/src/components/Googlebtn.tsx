@@ -1,6 +1,7 @@
 import axios from "axios";
 import { User } from "../types";
-import { LoginGoogleSuccess, registerGoogleSuccess } from "../redux/actions";
+// import { LoginGoogleSuccess, registerGoogleSuccess } from "../redux/actions";
+import { LoginGoogleSuccess } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
@@ -15,28 +16,40 @@ export const GoogleBtn = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const viewAlert = async (res: any) => {
-    object = {
+  // const viewAlert = async (res: any) => {
+  //   object = {
+  //     username: res.name,
+  //     email: res.email,
+  //   };
+    
+  //   const response = await axios.post(
+  //     "http://localhost:3001/googlepost",
+  //     object
+  //   );
+  //   dispatch(registerGoogleSuccess(object));
+  //   if (response.data.success) {
+  //     const login = await axios.post("http://localhost:3001/googlelogin", {
+  //       email: object.email,
+  //     });
+  //     dispatch(LoginGoogleSuccess(login.data.data));
+  //     setTimeout(() => {
+  //       navigate("/User");
+  //     }, 800);
+  //   }
+  // };
+  const viewAlert = async (res: any) => { 
+       object = {
       username: res.name,
       email: res.email,
     };
-    const response = await axios.post(
-      "http://localhost:3001/googlepost",
-      object
-    );
-    dispatch(registerGoogleSuccess(object));
-    if (response.data.success) {
-      const login = await axios.post("http://localhost:3001/googlelogin", {
-        email: object.email,
-      });
-      dispatch(LoginGoogleSuccess(login.data.data));
-      setTimeout(() => {
-        navigate("/User");
-      }, 800);
-    }
-  };
+    dispatch(LoginGoogleSuccess(object));
+    setTimeout(() => {
+            navigate("/User");
+          }, 800);
+  }
 
-  const midata = (tokenResponse: string) => {
+
+const midata = (tokenResponse: string) => {
     const accessToken = tokenResponse;
 
     axios

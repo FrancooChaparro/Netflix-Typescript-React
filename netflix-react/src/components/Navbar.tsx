@@ -71,10 +71,10 @@ export const Navbar = () => {
             className={styles.btnBrowse}
             onClick={() => setShowBrowse(!showBrowse)}
           >
-            Browse{" "}
+            Menu{" "}
             <span>
               <BsChevronDown />
-            </span>
+              </span> 
           </span>
         </div>
         {showBrowse && (

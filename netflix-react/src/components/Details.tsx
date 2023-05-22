@@ -11,14 +11,17 @@ export const Details = () => {
   const AllMovies: Array<MovieObject> | [] = useSelector(Movies);
 
   const param = async () => {
+    // eslint-disable-next-line
     const mov = await AllMovies.filter((e) => {
       if (e.id === id) return e;
     });
-    setmovieID(mov[0]);
+  setmovieID(mov[0]);
+
   };
 
   useEffect(() => {
     param();
+    // eslint-disable-next-line
   }, [AllMovies]);
 
   // // Con un useEffect obtengo la info y la guardo en el state y aparte dejo vacio el state

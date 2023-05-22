@@ -156,6 +156,11 @@ img {
         background-color: black;
         background: black;
         height: 100vh;
-
     }
 } 
+
+@media screen and (max-width: 495px)  { 
+    .containerAll { 
+        height: 100vh;
+    }
+}
