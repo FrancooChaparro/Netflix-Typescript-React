@@ -5,8 +5,8 @@ import cors from "cors";
 import { sequelize as db } from "./db";
 import router from "./src/routes/index"
 
-
 const server = express();
+
 
 //middlewares
 server.use(express.urlencoded({ extended: true }));
@@ -27,4 +27,5 @@ db.sync({ force: false }).then(() => {
         console.log(`%s listening at ${PORT}`); 
     });
 });
+
 

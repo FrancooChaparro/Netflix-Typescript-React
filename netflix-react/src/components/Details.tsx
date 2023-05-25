@@ -5,7 +5,10 @@ import { MovieObject } from "../types";
 import { useSelector } from "react-redux";
 import { Movies } from "../redux/reducer";
 
+
+
 export const Details = () => {
+
   const [movieID, setmovieID] = useState<MovieObject>();
   const { id } = useParams(); // Consigo el id
   const AllMovies: Array<MovieObject> | [] = useSelector(Movies);

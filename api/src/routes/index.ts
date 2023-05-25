@@ -4,8 +4,8 @@ import { movies } from "../../db";
 import axios from "axios";
 import { Model, Op } from "sequelize";
 import { compare, encrypt } from "../helpers/bcrypt";
-
 const router = Router();
+
 
 router.post("/googlepost", async (req: Request, res: Response) => { 
   try {
