@@ -37,7 +37,7 @@ export const GoogleBtn = () => {
   //     }, 800);
   //   }
   // };
-  const viewAlert = async (res: any) => { 
+  const viewAlert = async () => { 
     //    object = {
     //   username: res.name,
     //   email: res.email,
@@ -59,7 +59,7 @@ const midata = (tokenResponse: string) => {
         },
       })
       .then((response) => {
-        return viewAlert(response.data);
+        return viewAlert();
       })
       .catch((error) => {
         console.error(error);
