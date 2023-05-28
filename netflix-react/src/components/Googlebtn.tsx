@@ -1,20 +1,20 @@
 import axios from "axios";
-import { User } from "../types";
+// import { User } from "../types";
 // import { LoginGoogleSuccess, registerGoogleSuccess } from "../redux/actions";
-import { LoginGoogleSuccess } from "../redux/actions";
-import { useDispatch } from "react-redux";
+// import { LoginGoogleSuccess } from "../redux/actions";
+// import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
 import styles from "../stylesheets/googleBtn.module.css";
 import { FcGoogle } from "react-icons/fc";
 
 export const GoogleBtn = () => {
-  let object: User = {
-    username: "",
-    email: "",
-  };
+  // let object: User = {
+  //   username: "",
+  //   email: "",
+  // };
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // const viewAlert = async (res: any) => {
   //   object = {
@@ -38,11 +38,11 @@ export const GoogleBtn = () => {
   //   }
   // };
   const viewAlert = async (res: any) => { 
-       object = {
-      username: res.name,
-      email: res.email,
-    };
-    dispatch(LoginGoogleSuccess(object));
+    //    object = {
+    //   username: res.name,
+    //   email: res.email,
+    // };
+    // dispatch(LoginGoogleSuccess(object));
     setTimeout(() => {
             navigate("/User");
           }, 800);
