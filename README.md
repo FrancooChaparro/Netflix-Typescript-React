@@ -6,6 +6,8 @@ Ruta Register, creas tu usario, el form esta totalmente controlado en backend y 
 Ruta Login, accedes a tu cuenta previamente registrada o podes logear con Google, tiene GoogleAuth, En este preciso momento no tengo cargado el backend por eso lo tengo deshabilitado.
 ![login](./netflix-react/src/images/Login.png)
 
+![login](./netflix-react/src/images/loginauth.png)
+
 Ruta User, Accedes a tu cuenta y te redirige al Home de NETFLIX.
 ![user](./netflix-react/src/images/user.png)
 
