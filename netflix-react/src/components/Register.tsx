@@ -74,7 +74,6 @@ export const Register = () => {
       ...inputValues,
       [e.target.name]: e.target.value,
     });
-    console.log(e.target.value);
 
     setErrors(
       validate({
